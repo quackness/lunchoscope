@@ -1,12 +1,33 @@
 import React, { useState } from 'react'
+import axios, { AxiosResponse } from 'axios';
 
 const SelectSign = () => {
 
   const [selectSign, setSelectSign] = useState('');
 
-  // function handleSelect() {
-  //   console.loh
-  // }
+  async function handleClick() {
+  //   fetch(`https://horoscope-app-api.vercel.app/api/v1/get-horoscope/daily?sign=${selectSign}&day=TODAY`)
+  // .then(response => response.json())
+  // .then(data => console.log(data))
+  // .catch(error => console.error(error));
+    const response = await fetch(`https://horoscope-app-api.vercel.app/api/v1/get-horoscope/daily?sign=${selectSign}&day=TODAY`, {
+      mode: 'no-cors'
+    });
+    console.log(response);
+    const json = await response.json();
+    console.log(json)
+
+    // const headers = {
+    //   'Content-Type': 'application/json',
+    // }
+    // console.log("Click");
+    // console.log(selectSign);
+    // const response = await axios.get(`https://horoscope-app-api.vercel.app/api/v1/get-horoscope/daily?sign=${selectSign}&day=TODAY`);
+    // console.log(response.data);
+    // const response: AxiosResponse = await axios.get(`https://horoscope-app-api.vercel.app/api/v1/get-horoscope/daily?sign=${selectSign}&day=TODAY`);
+
+    // const responseData: YourResponseType = response.data;
+  }
 
   
   return (
@@ -27,6 +48,7 @@ const SelectSign = () => {
         <option value="aquarius">Aquarius: January 21 – February 19</option>
         <option value="pisces">Pisces: February 20 – March 20</option>
       </select>
+      <button onClick={handleClick}>Generate horoscope</button>
     </div>
   )
 }

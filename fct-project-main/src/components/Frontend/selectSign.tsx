@@ -6,16 +6,15 @@ const SelectSign = () => {
   const [selectSign, setSelectSign] = useState('');
 
   async function handleClick() {
-  //   fetch(`https://horoscope-app-api.vercel.app/api/v1/get-horoscope/daily?sign=${selectSign}&day=TODAY`)
+  //   fetch(`https://prog2700.onrender.com/get-horoscope/daily?sign=leo&day=today`)
   // .then(response => response.json())
   // .then(data => console.log(data))
   // .catch(error => console.error(error));
-    const response = await fetch(`https://horoscope-app-api.vercel.app/api/v1/get-horoscope/daily?sign=${selectSign}&day=TODAY`, {
-      mode: 'no-cors'
-    });
+    const response = await fetch(`https://prog2700.onrender.com/get-horoscope/daily?sign=${selectSign}&day=today`) 
     console.log(response);
     const json = await response.json();
-    console.log(json)
+    console.log(json.data.horoscope_data)
+      
 
     // const headers = {
     //   'Content-Type': 'application/json',

@@ -8,7 +8,9 @@ async function runProcess() {
 
   for (let i = 0; i < zodiakSigns.length; i++) {
 
-    const response = await fetch(`https://horoscope-app-api.vercel.app/api/v1/get-horoscope/daily?sign=${zodiakSigns[i]}&day=TODAY`);
+    const response = await fetch(`https://horoscope-app-api.vercel.app/api/v1/get-horoscope/daily?sign=${zodiakSigns[i]}&day=TODAY`, {
+      mode: 'no-cors'
+    });
     json = await response.json();
     console.log(json)
 

@@ -1,31 +1,44 @@
 import React, { useState } from 'react'
 import axios, { AxiosResponse } from 'axios';
+import Sentiment from 'sentiment';
 
 const SelectSign = () => {
 
   const [selectSign, setSelectSign] = useState('');
+  const [horoscope, setHoroscope] = useState();
 
   async function handleClick() {
-  //   fetch(`https://prog2700.onrender.com/get-horoscope/daily?sign=leo&day=today`)
-  // .then(response => response.json())
-  // .then(data => console.log(data))
-  // .catch(error => console.error(error));
+  try {
+    
+    if(selectSign === ''){
+      return;
+    }
+
+
+    const sentiment = new Sentiment();
+
+
+   
+   
+
     const response = await fetch(`https://prog2700.onrender.com/get-horoscope/daily?sign=${selectSign}&day=today`) 
     console.log(response);
     const json = await response.json();
-    console.log(json.data.horoscope_data)
+    setHoroscope(json.data.horoscope_data);
+    // // Get the sentiment result
+    const result = await sentiment.analyze(json.data.horoscope_data);
+    console.log(result);
+    
+    
+
+  } 
+  
+  catch (error) {
+    console.log(error);
+    
+  }
       
 
-    // const headers = {
-    //   'Content-Type': 'application/json',
-    // }
-    // console.log("Click");
-    // console.log(selectSign);
-    // const response = await axios.get(`https://horoscope-app-api.vercel.app/api/v1/get-horoscope/daily?sign=${selectSign}&day=TODAY`);
-    // console.log(response.data);
-    // const response: AxiosResponse = await axios.get(`https://horoscope-app-api.vercel.app/api/v1/get-horoscope/daily?sign=${selectSign}&day=TODAY`);
-
-    // const responseData: YourResponseType = response.data;
   }
 
   
@@ -48,6 +61,7 @@ const SelectSign = () => {
         <option value="pisces">Pisces: February 20 – March 20</option>
       </select>
       <button onClick={handleClick}>Generate horoscope</button>
+      <div>{horoscope && horoscope}</div>
     </div>
   )
 }

@@ -17,3 +17,6 @@ export default async function handler(
     res.status(405).json({ error: "Método no permitido" });
   }
 }
+
+
+

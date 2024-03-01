@@ -7,6 +7,22 @@ const SelectSign = () => {
   const [selectSign, setSelectSign] = useState('');
   const [horoscope, setHoroscope] = useState();
 
+
+  function getUserLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const latitude = position.coords.latitude;
+          const longitude = position.coords.longitude;
+          console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+        },
+        (error) => {
+          console.error(`Error: ${error.message}`);
+        }
+      );
+    }
+  }
+
   async function handleClick() {
   try {
     
@@ -14,12 +30,7 @@ const SelectSign = () => {
       return;
     }
 
-
     const sentiment = new Sentiment();
-
-
-   
-   
 
     const response = await fetch(`https://prog2700.onrender.com/get-horoscope/daily?sign=${selectSign}&day=today`) 
     console.log(response);
@@ -28,17 +39,11 @@ const SelectSign = () => {
     // // Get the sentiment result
     const result = await sentiment.analyze(json.data.horoscope_data);
     console.log(result);
-    
-    
-
+    getUserLocation()
   } 
-  
   catch (error) {
     console.log(error);
-    
   }
-      
-
   }
 
   

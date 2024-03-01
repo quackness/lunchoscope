@@ -11,11 +11,11 @@ export async function POST(req: any) {
   const result = await res.json()
   const assessed = await sentiment.analyze(result.data.horoscope_data);
   console.log(assessed)
-  //add the logic to do positive, negeative, neutral
+  //add the logic to do positive, negeative, neutral sentiment
   return NextResponse.json(assessed);
 
 
-  
+
 
 }
 

@@ -15,6 +15,16 @@ export async function GET() {
   return NextResponse.json(result);
 }
 
+export async function POST(req: any) {
+  const { latitude, longitude } = await req.json();
+  console.log(latitude, longitude)
+  const response = await fetch(`https://api.yelp.com/v3/businesses/search?latitude=${latitude}&longitude=${longitude}`, options);
+  const result = await response.json()
+  return NextResponse.json(result);
+}
+
+
+
 
 
 

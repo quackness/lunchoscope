@@ -15,6 +15,7 @@ const SelectSign = () => {
           const latitude = position.coords.latitude;
           const longitude = position.coords.longitude;
           console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+          axios.post('http://localhost:3000/yelp', {latitude, longitude})
         },
         (error) => {
           console.error(`Error: ${error.message}`);

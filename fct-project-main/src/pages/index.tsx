@@ -23,7 +23,7 @@ const Home: React.FC = () => {
       </motion.div>
       <SelectSign />
       <ZodiacDisplay />
-      <Gallery />
+      {/* <Gallery /> */}
       <DisplayRestaurants />
       <Testimonial />
     </Layout>

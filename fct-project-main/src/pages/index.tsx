@@ -5,6 +5,7 @@ import Banner from "../components/Frontend/banner";
 import Gallery from "../components/Frontend/gallery";
 import { motion } from 'framer-motion'
 import SelectSign from "@/components/Frontend/selectSign";
+import DisplayRestaurants from "@/components/Frontend/displayRestaurants";
 
 const Home: React.FC = () => {
   return (
@@ -18,6 +19,7 @@ const Home: React.FC = () => {
       </motion.div>
       <SelectSign />
       <Gallery />
+      <DisplayRestaurants />
       <Testimonial />
     </Layout>
   );

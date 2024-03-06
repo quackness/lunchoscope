@@ -5,7 +5,11 @@ import Banner from "../components/Frontend/banner";
 import Gallery from "../components/Frontend/gallery";
 import { motion } from 'framer-motion'
 import SelectSign from "@/components/Frontend/selectSign";
+
 import ZodiacDisplay from "@/components/Frontend/zodiacDisplay";
+
+import DisplayRestaurants from "@/components/Frontend/displayRestaurants";
+
 
 const Home: React.FC = () => {
   return (
@@ -20,6 +24,7 @@ const Home: React.FC = () => {
       <SelectSign />
       <ZodiacDisplay />
       <Gallery />
+      <DisplayRestaurants />
       <Testimonial />
     </Layout>
   );

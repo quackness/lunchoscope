@@ -1,13 +1,49 @@
 import React, { useState } from 'react';
 import axios, { AxiosResponse } from 'axios';
 import Sentiment from 'sentiment';
+import SkipHoroscopeRestaurantsList from './SkipHoroscopeRestaurantsList';
+import CoordinatesDisplay from './CoordinatesDisplay';
 
-const ZodiacDisplay = () => {
+interface Props {
+  latitude: number,
+  longitude: number,
+  sign: string
+}
+
+
+
+
+const ZodiacDisplay = (props: Props) => {
 
     const [selectSign, setSelectSign] = useState('');
     const [horoscope, setHoroscope] = useState('');
+    const [skipHorscope, setSkipHorscope] = useState(false);
 
     let signChosen = false;
+
+
+    const [latitude, setLatitude] = useState(0);
+    const [longitude, setLongitude] = useState(0);
+  
+    function getUserLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            setLatitude(position.coords.latitude);
+            setLongitude(position.coords.longitude);
+            console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+            axios.post('http://localhost:3000/yelp', {latitude, longitude})
+          },
+          (error) => {
+            console.error(`Error: ${error.message}`);
+          }
+        );
+      }
+    }
+    React.useEffect(() => {
+      getUserLocation();
+    }, []); 
+
 
     const handleButtonClick = async (sign:any) => {
         setSelectSign(sign);
@@ -29,6 +65,10 @@ const ZodiacDisplay = () => {
 
 
     return (<div>
+        {/* <CoordinatesDisplay longitude={props.latitude} latitude={props.longitude}/> */}
+        <button className="btn btn-wide mx-auto" onClick={() => setSkipHorscope(true)}>{skipHorscope? 'Get horoscope for the day' : 'Skip Horoscope'}</button>
+        {skipHorscope? (<SkipHoroscopeRestaurantsList skipped={skipHorscope} longitude={longitude} latitude={latitude}  />) : (
+            <>
         <div className="flex" >
             <label className="swap swap-flip">
                 <input type="checkbox" />
@@ -134,6 +174,8 @@ const ZodiacDisplay = () => {
             <p>{horoscope? `${selectSign.toUpperCase()}` : ""}</p>
         <div>{horoscope && horoscope}</div>
         </div>
+        </>)
+      }
     </div>)
 
 }

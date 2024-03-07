@@ -31,7 +31,7 @@ const DisplayRestaurants = () => {
     </div>
   </div>
 </div>
-<div className="card w-96 bg-base-100 shadow-xl">
+{/* <div className="card w-96 bg-base-100 shadow-xl">
   <figure><img src="https://s3-media2.fl.yelpcdn.com/bphoto/PeU-oyzSBGdYQiDDN2Dedw/o.jpg" alt="Shoes" /></figure>
   <div className="card-body">
     <h2 className="card-title">Another Restaurant </h2>
@@ -47,7 +47,7 @@ const DisplayRestaurants = () => {
   <div className="card-actions justify-end">
       <button className="btn btn-primary">Explore</button>
     </div>
-</div>
+</div> */}
 </>
   )
 }

@@ -14,11 +14,13 @@ interface Restaurant {
 }
 
 export async function GET(request: Request) {
+  console.log(request)
   const id = request.url.slice(request.url.lastIndexOf("/") + 1);
   console.log(id)
   const res = await fetch(`https://api.yelp.com/v3/businesses/${id}`, options);
   const restaurant: Restaurant = await res.json();
   if (!restaurant.id) return NextResponse.json({ message: "Inavlid" })
-  return NextResponse.json(id);
+  console.log(restaurant)
+  return NextResponse.json(restaurant);
 }
 

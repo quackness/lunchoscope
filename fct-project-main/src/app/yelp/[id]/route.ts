@@ -9,7 +9,7 @@ const options = {
 };
 
 interface Restaurant {
-  name: string;
+  // name: string;
   id: string;
 }
 

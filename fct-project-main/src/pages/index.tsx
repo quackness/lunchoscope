@@ -22,9 +22,9 @@ const Home: React.FC = () => {
         <Banner />
       </motion.div>
       <SelectSign />
-      <ZodiacDisplay />
+      <ZodiacDisplay latitude={0} longitude={0} sign={""} />
       {/* <Gallery /> */}
-      <DisplayRestaurants />
+      {/* <DisplayRestaurants /> */}
       <Testimonial />
     </Layout>
   );

@@ -49,6 +49,7 @@ const SkipHoroscopeRestaurantsList = (props: Props) => {
 
   return (
     <>
+    <Test />
     <div>{props.skipped? "Skipped horoscope!!" : ""}</div>
     <div>Lat: {props.longitude}</div>
     <div>Lat: {props.latitude}</div>

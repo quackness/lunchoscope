@@ -1,8 +1,11 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import Link from 'next/link';
+
 
 interface Restaurant {
+  id: string;
   name: string;
   image_url: string;
   rating: number;
@@ -71,7 +74,7 @@ const SkipHoroscopeRestaurantsList = (props: Props) => {
       </div>
     </div>
     <div className="card-actions justify-end">
-      <button className="btn btn-primary btn-wide">See more details</button>
+      <button className="btn btn-primary btn-wide"><Link href="/restaurant/sUQilZWY6Mp-IaWt09q8-w">See more details</Link></button>
     </div>
     </div>
   </div>

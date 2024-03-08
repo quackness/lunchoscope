@@ -31,6 +31,7 @@ function Page({ params }: PageProps) {
   return (
     
     <div>
+   
     <h1>Page</h1>
     <p>ID: {params.id}</p>
     <p>{restaurant?.name}</p>

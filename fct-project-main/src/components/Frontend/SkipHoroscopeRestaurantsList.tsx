@@ -74,7 +74,7 @@ const SkipHoroscopeRestaurantsList = (props: Props) => {
       </div>
     </div>
     <div className="card-actions justify-end">
-      <button className="btn btn-primary btn-wide"><Link href="/restaurant/sUQilZWY6Mp-IaWt09q8-w">See more details</Link></button>
+      <button className="btn btn-primary btn-wide"><Link href={`/restaurant/${restaurant.id}`}>See more details</Link></button>
     </div>
     </div>
   </div>

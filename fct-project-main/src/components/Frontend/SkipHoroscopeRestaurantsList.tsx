@@ -8,14 +8,26 @@ interface Restaurant {
   rating: number;
   price: number
  categories: { alias: string; title: string }[];
+ location: Location;
+ is_closed: boolean;
 }
 
+interface Location {
+  address1: string;
+  address2?: string;
+  address3?: string;
+  city: string;
+  zip_code: string;
+  country: string;
+  state: string;
+  display_address: string[];
+  cross_streets?: string;
+}
 
 interface Props {
   latitude: number,
   longitude: number,
   skipped: boolean,
-  name: string
 }
 const SkipHoroscopeRestaurantsList = (props: Props) => {
   const [restaurantNoSentiment, setRestaurantNoSentiment] = useState<Restaurant[]>([]);
@@ -36,7 +48,6 @@ const SkipHoroscopeRestaurantsList = (props: Props) => {
     <div>{props.skipped? "Skipped horoscope!!" : ""}</div>
     <div>Lat: {props.longitude}</div>
     <div>Lat: {props.latitude}</div>
-    {/* {restaurantNoSentiment.map(restaurant => <div key={restaurant.name}>{restaurant.name}</div> */}
     {restaurantNoSentiment.length === 0 ? <progress className="progress w-56"></progress> : ""}
     {restaurantNoSentiment.map(restaurant => (
   <div key={restaurant.name} className="card w-3/4 h-1/6 card-side bg-base-100 shadow-xl mx-auto m-8">
@@ -46,8 +57,9 @@ const SkipHoroscopeRestaurantsList = (props: Props) => {
         {restaurant.name}
         <div className="badge badge-primary">Rating: {restaurant.rating}</div>
         {restaurant.price? <div className="badge badge-secondary"> Price range: {restaurant.price}</div> : ""}
+        {restaurant.is_closed? <div className="badge">Closed</div> : <div className="badge badge-accent">Open</div>}
       </h2>
-      {/* <p>{restaurant.location} </p> */}
+      <p>📍 {restaurant.location.display_address.join(', ')} </p>
       <p>Description....</p>
       <div className="card-actions justify-start">
       <div>

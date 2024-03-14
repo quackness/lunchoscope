@@ -39,28 +39,28 @@ interface Restaurant {
 }
 
 // Function to render star rating
-function renderStarRating(rating: number) {
-  const roundedRating = Math.round(rating * 2) / 2; // Round to nearest half star
-  const numFullStars = Math.floor(roundedRating);
-  const hasHalfStar = roundedRating % 1 !== 0;
+// function renderStarRating(rating: number) {
+//   const roundedRating = Math.round(rating * 2) / 2; // Round to nearest half star
+//   const numFullStars = Math.floor(roundedRating);
+//   const hasHalfStar = roundedRating % 1 !== 0;
 
-  const stars = [];
-  for (let i = 1; i <= 5; i++) {
-      if (i <= numFullStars) {
-          stars.push(<input key={i} type="radio" name="rating" className="mask mask-heart bg-green-400" checked />);
-      } else if (hasHalfStar && i === numFullStars + 1) {
-          stars.push(<input key="half" type="radio" name="rating" className="mask mask-heart bg-green-400" checked />);
-      } else {
-          stars.push(<input key={i} type="radio" name="rating" className="mask mask-heart bg-gray-400" />);
-      }
-  }
+//   const stars = [];
+//   for (let i = 1; i <= 5; i++) {
+//       if (i <= numFullStars) {
+//           stars.push(<input key={i} type="radio" name="rating" className="mask mask-heart bg-green-400" checked />);
+//       } else if (hasHalfStar && i === numFullStars + 1) {
+//           stars.push(<input key="half" type="radio" name="rating" className="mask mask-heart bg-green-400" checked />);
+//       } else {
+//           stars.push(<input key={i} type="radio" name="rating" className="mask mask-heart bg-gray-400" />);
+//       }
+//   }
 
-  return (
-      <div className="rating gap-1">
-          {stars}
-      </div>
-  );
-}
+//   return (
+//       <div className="rating gap-1">
+//           {stars}
+//       </div>
+//   );
+// }
 
 
 function Page({ params }: PageProps) {
@@ -137,7 +137,7 @@ function Page({ params }: PageProps) {
           {restaurant?.name ? <h2 className="card-title">{`${restaurant?.name}`}</h2> : ''}
           {restaurant?.location.display_address ? <p>Address: {`${restaurant?.location.display_address.join(', ')}`}</p> : ''}
           {restaurant?.display_phone ? <p>Phone: {`${restaurant?.display_phone}`}</p> : ''}
-          {restaurant?.rating ? <p>Rating: {renderStarRating(restaurant.rating)}</p> : ''}
+          {restaurant?.rating ? <p>Rating: {`${restaurant?.rating}`}</p> : ''}
           {restaurant?.price ? <p>Price: {`${restaurant.price}`}</p> : ''}
          
 {restaurant?.hours ?

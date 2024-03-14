@@ -49,7 +49,6 @@ const SkipHoroscopeRestaurantsList = (props: Props) => {
 
   return (
     <>
-    <Navbar />
     <div>{props.skipped? "Skipped horoscope!!" : ""}</div>
     <div>Lat: {props.longitude}</div>
     <div>Lat: {props.latitude}</div>

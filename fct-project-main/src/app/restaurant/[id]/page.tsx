@@ -38,39 +38,29 @@ interface Restaurant {
   url: string;
 }
 
-// Function to render star rating
-// function renderStarRating(rating: number) {
-//   const roundedRating = Math.round(rating * 2) / 2; // Round to nearest half star
-//   const numFullStars = Math.floor(roundedRating);
-//   const hasHalfStar = roundedRating % 1 !== 0;
-
-//   const stars = [];
-//   for (let i = 1; i <= 5; i++) {
-//       if (i <= numFullStars) {
-//           stars.push(<input key={i} type="radio" name="rating" className="mask mask-heart bg-green-400" checked />);
-//       } else if (hasHalfStar && i === numFullStars + 1) {
-//           stars.push(<input key="half" type="radio" name="rating" className="mask mask-heart bg-green-400" checked />);
-//       } else {
-//           stars.push(<input key={i} type="radio" name="rating" className="mask mask-heart bg-gray-400" />);
-//       }
-//   }
-
-//   return (
-//       <div className="rating gap-1">
-//           {stars}
-//       </div>
-//   );
-// }
-
+interface Review {
+  id: string;
+  text: string;
+}
 
 function Page({ params }: PageProps) {
   const [restaurant, setRestaurant] = useState<Restaurant | null>(null);
+  const [reviews, setReviews] = useState<Review[]>([]);
 
   useEffect(() => {
     axios
       .get(`http://localhost:3000/yelp/${params.id}`)
       .then((response) => {
         setRestaurant(response.data);
+      })
+      .catch((error) => {
+        console.error(`Error: ${error.message}`);
+      });
+      axios
+      .get(`http://localhost:3000/yelp/${params.id}/reviews`)
+      .then((response) => {
+        console.log(response.data)
+        setReviews(response.data);
       })
       .catch((error) => {
         console.error(`Error: ${error.message}`);

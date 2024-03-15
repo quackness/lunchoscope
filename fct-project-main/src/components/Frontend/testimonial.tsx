@@ -1,7 +1,21 @@
 import Star from "./star";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+
+interface Review {
+  id: string;
+  text: string;
+}
+
 
 export default function Testimonial() {
+
+  const [reviews, setReviews] = useState<Review[]>([]);
+
+  useEffect(() => {
+    // TODO: add reviews, then map through them and output 
+  },[]);
+
   return (
     <section>
       <div className="mx-auto max-w-screen-xl sm:p-14 p-4">

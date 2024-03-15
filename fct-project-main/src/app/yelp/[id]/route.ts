@@ -13,6 +13,7 @@ interface Restaurant {
   id: string;
 }
 
+
 export async function GET(request: Request) {
   console.log(request)
   const id = request.url.slice(request.url.lastIndexOf("/") + 1);
@@ -23,4 +24,3 @@ export async function GET(request: Request) {
   console.log(restaurant)
   return NextResponse.json(restaurant);
 }
-

@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Link from 'next/link';
-import Test from './test';
+import Navbar from '../Frontend/navbar';
 
 
 interface Restaurant {
@@ -49,7 +49,6 @@ const SkipHoroscopeRestaurantsList = (props: Props) => {
 
   return (
     <>
-    <Test />
     <div>{props.skipped? "Skipped horoscope!!" : ""}</div>
     <div>Lat: {props.longitude}</div>
     <div>Lat: {props.latitude}</div>

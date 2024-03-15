@@ -3,6 +3,7 @@ import axios, { AxiosResponse } from 'axios';
 import Sentiment from 'sentiment';
 import SkipHoroscopeRestaurantsList from './SkipHoroscopeRestaurantsList';
 import CoordinatesDisplay from './CoordinatesDisplay';
+import HoroscopeRestaurantsList from './HoroscopeRestaurantsList';
 
 interface Props {
   latitude: number,
@@ -18,6 +19,7 @@ const ZodiacDisplay = (props: Props) => {
     const [selectSign, setSelectSign] = useState('');
     const [horoscope, setHoroscope] = useState('');
     const [skipHorscope, setSkipHorscope] = useState(false);
+    const [sentiment, setSentiment] = useState({});
 
     let signChosen = false;
 
@@ -59,7 +61,7 @@ const ZodiacDisplay = (props: Props) => {
       setHoroscope(json.data.horoscope_data);
       // // Get the sentiment result
       const result = await sentiment.analyze(json.data.horoscope_data);
-     
+      setSentiment(result);
       console.log("result", result);
     };
 
@@ -174,6 +176,7 @@ const ZodiacDisplay = (props: Props) => {
             <p>{horoscope? `${selectSign.toUpperCase()}` : ""}</p>
         <div>{horoscope && horoscope}</div>
         </div>
+        <HoroscopeRestaurantsList sentiment={sentiment} longitude={longitude} latitude={latitude}/>
         </>)
       }
     </div>)

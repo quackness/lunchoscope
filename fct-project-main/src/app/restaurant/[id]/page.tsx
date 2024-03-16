@@ -147,10 +147,7 @@ function Page({ params }: PageProps) {
           </div>
         </div>
       </div>
-
-      <Testimonial />
-
-   
+{restaurant?.id && <Testimonial params={params.id}/>}
     </>
   );
 }

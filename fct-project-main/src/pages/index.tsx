@@ -25,7 +25,6 @@ const Home: React.FC = () => {
       <ZodiacDisplay latitude={0} longitude={0} sign={""} />
       {/* <Gallery /> */}
       {/* <DisplayRestaurants /> */}
-      <Testimonial />
     </Layout>
   );
 };

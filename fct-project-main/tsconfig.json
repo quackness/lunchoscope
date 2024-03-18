@@ -35,7 +35,7 @@
     "**/*.tsx",
     "src/pages/api/horoscope/get.ts",
     ".next/types/**/*.ts"
-  ],
+, "index.ts"  ],
   "exclude": [
     "node_modules"
   ]

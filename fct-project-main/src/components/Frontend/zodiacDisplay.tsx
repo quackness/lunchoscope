@@ -65,10 +65,14 @@ const ZodiacDisplay = (props: Props) => {
       console.log("result", result);
     };
 
-
+    const handleSkipHoroscopeButtonClick = () => {
+        // change skipHorscope between true-false
+        setSkipHorscope(!skipHorscope);
+      };
+      
     return (<div>
         {/* <CoordinatesDisplay longitude={props.latitude} latitude={props.longitude}/> */}
-        <button className="btn btn-wide mx-auto" onClick={() => setSkipHorscope(true)}>{skipHorscope? 'Get horoscope for the day' : 'Skip Horoscope'}</button>
+        <button className="btn btn-wide mx-auto" onClick={handleSkipHoroscopeButtonClick}>{skipHorscope? 'Get horoscope for the day' : 'Skip Horoscope'}</button>
         {skipHorscope? (<SkipHoroscopeRestaurantsList skipped={skipHorscope} longitude={longitude} latitude={latitude}  />) : (
             <>
         <div className="flex" >

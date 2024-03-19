@@ -3,6 +3,8 @@ import axios from 'axios';
 import {AiFillCheckCircle} from 'react-icons/ai';
 
 //https://github.com/bwestwood11/stripe-checkout-nextjs13/blob/main/app/components/PricingCard.jsx
+//test payments with the credit cards https://docs.stripe.com/testing#cards
+
 
 const PricingCard = ({price}) => {
 

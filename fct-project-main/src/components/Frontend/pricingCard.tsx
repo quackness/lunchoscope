@@ -8,55 +8,52 @@ import {AiFillCheckCircle} from 'react-icons/ai';
 
 const PricingCard = ({price}) => {
 
-    const dynamicSubTitle = (price) => {
-      if (price.nickname === "FREE Trial") {
-        return (
-          <div className="mt-6 space-y-4">
-         <div className="flex space-x-3">
-         <AiFillCheckCircle
-            className="h-5 w-5 flex-shrink-0 text-green-500 ml-2"
-            aria-hidden="true"
-          />
-          <p className="text-sm text-gray-500">5 Sentiment analysis per month</p>
+  const dynamicSubTitle = (price) => {
+    if (price.nickname === "FREE Trial") {
+      return (
+        <div className="mt-6 space-y-4">
+          <div className="flex space-x-3">
+            <AiFillCheckCircle
+              className="h-5 w-5 flex-shrink-0 text-green-500 ml-2"
+              aria-hidden="true"
+            />
+            <span className="text-sm text-gray-500">5 Sentiment analysis per month</span>
           </div>
         </div>
-        )
-      } else if (price.nickname === "Lunchoscope Annual Subscription") {
-        return (
-          <>
-          <div className="mt-6 space-y-4">
-            <div className="flex space-x-3">
+      );
+    } else if (price.nickname === "Lunchoscope Annual Subscription") {
+      return (
+        <div className="mt-6 space-y-4">
+          <div className="flex space-x-3">
             <AiFillCheckCircle
-            className="h-5 w-5 flex-shrink-0 text-green-500 ml-2"
-            aria-hidden="true"
-          />
-              <p className="text-sm text-gray-500">20% discount</p>
-            </div>
-            <div className="flex space-x-3">
-            <AiFillCheckCircle
-            className="h-5 w-5 flex-shrink-0 text-green-500 ml-2"
-            aria-hidden="true"
-          />
-        <p className="text-sm text-gray-500">Unlimited Sentiment Analysis</p>
-        </div>
+              className="h-5 w-5 flex-shrink-0 text-green-500 ml-2"
+              aria-hidden="true"
+            />
+            <span className="text-sm text-gray-500">20% discount</span>
           </div>
-         </>
-
-        );
-      } else if (price.nickname === "Lunchoscope Monhtly Subscription") {
-        return (
-          <div className="mt-6 space-y-4">     
-           <div className="flex space-x-3">
+          <div className="flex space-x-3">
             <AiFillCheckCircle
-            className="h-5 w-5 flex-shrink-0 text-green-500 ml-2"
-            aria-hidden="true"
-          />
-        <p className="text-sm text-gray-500">Unlimited Sentiment Analysis</p>
+              className="h-5 w-5 flex-shrink-0 text-green-500 ml-2"
+              aria-hidden="true"
+            />
+            <span className="text-sm text-gray-500">Unlimited Sentiment Analysis</span>
+          </div>
         </div>
-      </div>
-        );
-      }
+      );
+    } else if (price.nickname === "Lunchoscope Monthly Subscription") {
+      return (
+        <div className="mt-6 space-y-4">     
+          <div className="flex space-x-3">
+            <AiFillCheckCircle
+              className="h-5 w-5 flex-shrink-0 text-green-500 ml-2"
+              aria-hidden="true"
+            />
+            <span className="text-sm text-gray-500">Unlimited Sentiment Analysis</span>
+          </div>
+        </div>
+      );
     }
+  }
 
 // POST request 
 const handleSubscription = async (e: any) => {
@@ -80,7 +77,7 @@ const handleSubscription = async (e: any) => {
       <div>
         <div className="bg-gray-100 h-38 items-center font-bold">
           <h4 className="text-3xl">{price.nickname}</h4>
-          <p>{dynamicSubTitle(price)}</p>
+          <span>{dynamicSubTitle(price)}</span>
           <div>
             <div className="flex flex-col items-center justify-center pt-4">
               <h1 className="text-5xl font-bold">

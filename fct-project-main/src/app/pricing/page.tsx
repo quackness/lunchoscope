@@ -60,14 +60,6 @@ const Pricing = () => {
          </div>
          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-[1040px] items-center mx-auto">
            {prices && prices.map(price => (
-              // <div key={price.id}>
-              // <p>ID: {price.id}</p>
-              // <p>Object: {price.currency}</p>
-              // <p>Active: {price.active.toString()}</p>
-            // </div>
-            // console.log(price)
-            // return price
-            // <p>{price.nickname}</p>
            <PricingCard price={price} key={price.id}/>
            ))}
          </div>

@@ -72,8 +72,7 @@ const handleSubscription = async (e: any) => {
     },
   }
   );
-  console.log("data", data)
-  // window.location.assign(data)
+  window.location.assign(data)
 }
 
   

@@ -26,6 +26,15 @@ const PricingCard = ({price}) => {
         <div className="bg-gray-100 h-28 items-center font-bold">
           <h4 className="text-3xl">{price.nickname}</h4>
           <p>{dynamicSubTitle(price)}</p>
+          <div>
+            <div className="flex flex-col items-center justify-center pt-4">
+              <h1 className="text-5xl font-bold">
+              {(price.unit_amount / 100).toLocaleString('en-CA',{ style: 'currency', currency: 'CAD'})}</h1>
+            </div>
+          </div>
+          <button className="mt-8 flex w-full justify-center rounded-md border border-transparent bg-[#f1592a] py-2 px-4 text-sm font-medium text-white shadow-sm" onClick={()=> {}}>
+             Subscribe
+          </button>
 
         </div>
       </div>

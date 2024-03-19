@@ -7,9 +7,9 @@ export default function Banner() {
       <div className="mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-4">
         <div className="max-w-xl text-center sm:text-left lg:pl-12">
           <h1 className="text-3xl font-extrabold sm:text-5xl">
-            Bienvenido a
+            Confused about a place to eat out ?
             <strong className="block font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-lime-600 to-green-500">
-              Bamboo Express
+              Lunchoscope!
             </strong>
           </h1>
 
@@ -23,7 +23,7 @@ export default function Banner() {
             <Link
               href="/reserva"
               className="block w-full rounded bg-green-500 px-12 py-3 text-sm font-medium text-white shadow hover:bg-green-600 focus:outline-none focus:ring active:bg-green-500 sm:w-auto">
-              Reservar
+              Login
             </Link>
           </div>
         </div>

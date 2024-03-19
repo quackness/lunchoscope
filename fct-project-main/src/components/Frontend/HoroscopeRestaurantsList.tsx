@@ -86,7 +86,7 @@ const HoroscopeRestaurantsList = ({sentiment, longitude, latitude}) => {
 
 useEffect(()=>{
     fetchData();
-}, [])
+}, [longitude, latitude])
 
 useEffect(()=>{
     filterRestaurants();

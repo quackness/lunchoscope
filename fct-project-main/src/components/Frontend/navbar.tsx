@@ -14,7 +14,7 @@ export default function Navbar() {
           <div className="flex lg:w-0 lg:flex-1">
             <Link href="/">
               <span className="block font-extrabold text-2xl	text-green-500">
-                Bamboo Express
+                LunchoScope
               </span>
               {/* <Image
                 alt="logo"
@@ -37,7 +37,7 @@ export default function Navbar() {
                   : "text-gray-500 hover:text-gray-900 transition"
                   }  text-base`}
               >
-                Inicio
+                Home
               </span>
             </Link>
             <Link href="/carta" passHref>
@@ -47,7 +47,7 @@ export default function Navbar() {
                   : "text-gray-500 hover:text-gray-900 transition "
                   } text-base`}
               >
-                Carta
+                About
               </span>
             </Link>
             <Link href="/reserva" passHref>
@@ -57,7 +57,7 @@ export default function Navbar() {
                   : "text-gray-500 hover:text-gray-900 transition"
                   }  text-base`}
               >
-                Reserva
+                Services
               </span>
             </Link>
             <Link href="/contacto" passHref>
@@ -67,7 +67,7 @@ export default function Navbar() {
                   : "text-gray-500 hover:text-gray-900 transition"
                   }  text-base`}
               >
-                Contacto
+                Contact
               </span>
             </Link>
           </nav>
@@ -75,7 +75,7 @@ export default function Navbar() {
           <div className="hidden flex-1 items-center justify-end gap-4 sm:flex">
             <Link href="/reserva" passHref>
               <span className="rounded-lg bg-green-500 transition hover:bg-green-600 px-5 py-2 text-sm font-medium text-white">
-                Reservar
+                Login
               </span>
             </Link>
           </div>

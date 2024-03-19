@@ -20,9 +20,11 @@ const HoroscopeRestaurantsList = ({sentiment, longitude, latitude}) => {
       const neutral = [];
 
       const res = await axios.post('http://localhost:3000/yelp', {longitude, latitude})
+      console.log("res", res.data);
+      
       
       setRestaurants(res.data.businesses);
-      const uniqueCategories = [...new Set<string>(res.data.businesses.map((restaurant) => restaurant.categories[0].title))];
+      const uniqueCategories = [...new Set<string>(res?.data?.businesses?.map((restaurant) => restaurant.categories[0].title))];
       
 
       
@@ -117,7 +119,7 @@ useEffect(()=>{
       </div>
     </div>
     <div className="card-actions justify-end">
-      <button className="btn btn-primary btn-wide"><Link href="/restaurant/sUQilZWY6Mp-IaWt09q8-w">See more details</Link></button>
+      <button className="btn btn-primary btn-wide"><Link href={`/restaurant/${restaurant.id}`}>See more details</Link></button>
     </div>
     </div>
   </div>

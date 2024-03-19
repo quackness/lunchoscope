@@ -14,9 +14,7 @@ export default function Banner() {
           </h1>
 
           <p className="mt-4 max-w-lg sm:text-xl sm:leading-relaxed">
-            Nuestras recetas únicas y de alta calidad te transportarán a un
-            viaje culinario por China. Reserva tu mesa ahora y disfruta de una
-            experiencia gastronómica inolvidable !
+          Lunchoscope is a unique website that combines the excitement of astrology with the practicality of finding the perfect place to dine. By simply inputting your horoscope, Lunchoscope generates tailored restaurant recommendations in your vicinity.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4 text-center">

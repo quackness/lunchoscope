@@ -5,10 +5,18 @@ import {AiFillCheckCircle} from 'react-icons/ai';
 //https://github.com/bwestwood11/stripe-checkout-nextjs13/blob/main/app/components/PricingCard.jsx
 //test payments with the credit cards https://docs.stripe.com/testing#cards
 
+interface Price {
+  id: string;
+  nickname: string;
+}
 
-const PricingCard = ({price}) => {
+interface PricingCardProps {
+  price: Price;
+}
 
-  const dynamicSubTitle = (price) => {
+const PricingCard = ({ price }: PricingCardProps) => {
+
+  const dynamicSubTitle = (price: { nickname: string; }) => {
     if (price.nickname === "FREE Trial") {
       return (
         <div className="mt-6 space-y-4">

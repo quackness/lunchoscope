@@ -14,7 +14,7 @@ export default function Navbar() {
           <div className="flex lg:w-0 lg:flex-1">
             <Link href="/">
               <span className="block font-extrabold text-2xl	text-green-500">
-                LunchoScope
+                Lunchoscope
               </span>
               {/* <Image
                 alt="logo"
@@ -68,6 +68,26 @@ export default function Navbar() {
                   }  text-base`}
               >
                 Contact
+              </span>
+            </Link>
+            <Link href="/pricing" passHref>
+              <span
+                className={`${router.pathname === "/pricing"
+                  ? "text-green-500"
+                  : "text-gray-500 hover:text-gray-900 transition "
+                  } text-base`}
+              >
+                Pricing
+              </span>
+            </Link>
+            <Link href="/admin/users" passHref>
+              <span
+                className={`${router.pathname === "/admin/users"
+                  ? "text-green-500"
+                  : "text-gray-500 hover:text-gray-900 transition "
+                  } text-base`}
+              >
+                Admin
               </span>
             </Link>
           </nav>

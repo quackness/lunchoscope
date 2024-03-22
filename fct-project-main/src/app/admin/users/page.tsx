@@ -6,6 +6,7 @@ import axios from 'axios';
 interface Users {
   name: string;
   email: string;
+  isAdmin: boolean;
   subscribed: boolean;
   sentimentLeft: number
 }
@@ -53,7 +54,7 @@ const UsersPage = () => {
  <th>{i +1}</th>
       <td>{user?.name}</td>
       <td>{user?.email}</td>
-      <td>role?</td>
+      <td>{user?.isAdmin ? "Admin" : "User"}</td>
       <td>{user?.subscribed ? "Paid" : "FREE"}</td>
       <td>{user?.sentimentLeft}</td>
       <td>

@@ -8,12 +8,12 @@ export default function Navbar() {
   const router = useRouter();
 
   return (
-    <header aria-label="Site Header" className="shadow-sm" id="header">
+    <header aria-label="Site Header" className="bg-[#4a00ff]" id="header">
       <div className="mx-auto max-w-screen-xl p-4">
         <div className="flex items-center justify-between gap-4 lg:gap-10">
           <div className="flex lg:w-0 lg:flex-1">
             <Link href="/">
-              <span className="block font-extrabold text-2xl	text-green-500">
+              <span className="block font-extrabold text-3xl	text-white">
                 LunchoScope
               </span>
               {/* <Image
@@ -33,7 +33,7 @@ export default function Navbar() {
             <Link href="/" passHref>
               <span
                 className={`${router.pathname === "/"
-                  ? "text-green-500"
+                  ? "text-white"
                   : "text-gray-500 hover:text-gray-900 transition"
                   }  text-base`}
               >
@@ -74,9 +74,10 @@ export default function Navbar() {
 
           <div className="hidden flex-1 items-center justify-end gap-4 sm:flex">
             <Link href="/reserva" passHref>
-              <span className="rounded-lg bg-green-500 transition hover:bg-green-600 px-5 py-2 text-sm font-medium text-white">
-                Login
-              </span>
+           
+           
+              <button className="btn btn-outline  text-white">Login</button>
+           
             </Link>
           </div>
 

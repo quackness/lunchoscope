@@ -13,8 +13,9 @@ export default function Navbar() {
         <div className="flex items-center justify-between gap-4 lg:gap-10">
           <div className="flex lg:w-0 lg:flex-1">
             <Link href="/">
-             
-            
+            <span className="block font-extrabold text-2xl text-white">
+                Lunchoscope
+              </span>
               {/* <Image
                 alt="logo"
                 src="/ico/ico.png"

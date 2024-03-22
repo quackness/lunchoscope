@@ -9,4 +9,4 @@ export async function GET(req: any) {
   return NextResponse.json(allUsers);
 }
 
-//the connection works, verified at http://localhost:3000/users
+//the connection works, verified at http://localhost:3000/getUsers

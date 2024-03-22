@@ -6,7 +6,7 @@ export default function Banner() {
     <section>
       <div className="mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-4">
         <div className="max-w-xl text-center sm:text-left lg:pl-12">
-          <h1 className="text-3xl font-extrabold sm:text-5xl">
+          <h1 className="text-2xl font-extrabold sm:text-5xl">
             Confused about a place to eat out ?
             <strong className="block font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-lime-600 to-green-500">
               Lunchoscope!
@@ -28,7 +28,7 @@ export default function Banner() {
         <div className="mt-12 sm:mt-16 lg:mt-0 lg:ml-16 lg:flex-1 lg:pl-8 pointer-events-none">
           <Image
             alt="banner"
-            src="/img/banner.png"
+            src="/img/lunchoscope.png"
             className="hidden lg:block"
             width={600}
             height={600}

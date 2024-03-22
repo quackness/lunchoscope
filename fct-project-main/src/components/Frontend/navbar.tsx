@@ -14,7 +14,7 @@ export default function Navbar() {
           <div className="flex lg:w-0 lg:flex-1">
             <Link href="/">
              
-           
+            
               {/* <Image
                 alt="logo"
                 src="/ico/ico.png"

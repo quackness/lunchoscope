@@ -4,7 +4,6 @@ import { NextResponse } from "next/server";
 // import { PrismaClient } from '@prisma/client'
 
 // const prisma = new PrismaClient()
-
 export async function POST(req: any, res: any) {
 
     // export async function POST(req: any) {
@@ -17,22 +16,26 @@ export async function POST(req: any, res: any) {
 
     try {
         const body = await req.json();
-        const { email, name, Password, isAdmin, sentimentLeft, subscribed } = body;
+        const { email, name, hashedPassword, isAdmin, sentimentLeft, subscribed } = body;
         console.log(body);
-        const hashedPassword = await bcrypt.hash(Password, 12);
-        console.log("here");
+        // const hashedPassword = await bcrypt.hash(Password, 12);
+        // console.log(hashedPassword);
+        
 
+        
         const user = await prisma.user.create({
-            // data: {
+            data: {
                 email,
                 name,
                 hashedPassword,
                 isAdmin,
                 sentimentLeft,
                 subscribed,
-            // },
+            },
         });
 
+        console.log(user);
+        
         return NextResponse.json(user);
     } catch (error) {
         console.log(error);

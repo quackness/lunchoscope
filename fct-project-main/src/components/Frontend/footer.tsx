@@ -18,8 +18,8 @@ export default function Footer() {
           <div>
             <div className="flex justify-center text-green-600 lg:justify-start">
               <Link href="/">
-                <strong className="block font-extrabold text-2xl text-green-500">
-                  Bamboo Express
+                <strong className="block font-extrabold text-2x text-[#4A00FF]">
+                  Lunchoscope
                 </strong>
               </Link>
             </div>
@@ -71,7 +71,7 @@ export default function Footer() {
         </div>
 
         <p className="mt-12 text-center text-sm text-gray-500 lg:text-right">
-          Copyright &copy; 2023. All rights reserved.
+          Copyright &copy; 2024. All rights reserved.
         </p>
       </div>
     </footer>

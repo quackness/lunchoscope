@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 interface Users {
+  id: string;
   name: string;
   email: string;
   isAdmin: boolean;
@@ -29,6 +30,16 @@ const UsersPage = () => {
       console.error('Error with fetching users:', error);
     }
   }
+
+  const handleDelete = async (id: String) => {
+    console.log(id)
+    try {
+      await axios.delete(`http://localhost:3000/getUsers/${id}`);
+      setUsers(users.filter(user => user.id !== id)); 
+    } catch (error) {
+      console.error('Error deleting user:', error);
+    }
+  };
 
   return (
   <>
@@ -59,7 +70,7 @@ const UsersPage = () => {
       <td>{user?.sentimentLeft}</td>
       <td>
       <button className="btn btn-outline btn-accent">Edit</button>
-<button className="btn btn-outline btn-error">Delete</button>
+<button className="btn btn-outline btn-error" onClick={() => handleDelete(user.id)}>Delete</button>
       </td>
   </tr>
       )   

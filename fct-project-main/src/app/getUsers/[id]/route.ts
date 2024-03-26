@@ -8,6 +8,7 @@ interface Request {
 }
 
 export async function DELETE(request: Request) {
+  console.log(request)
   try {
     console.log(request.url)
     const address = request.url.split('/');

@@ -93,11 +93,10 @@ export default function Navbar() {
           </nav>
 
           <div className="hidden flex-1 items-center justify-end gap-4 sm:flex">
-            <Link href="/reserva" passHref>
-           
-           
-              <button className="btn btn-outline  text-white">Login</button>
-           
+            <Link href="/login" passHref>
+              <span className="rounded-lg bg-green-500 transition hover:bg-green-600 px-5 py-2 text-sm font-medium text-white">
+                Login
+              </span>
             </Link>
           </div>
 
@@ -138,7 +137,7 @@ export default function Navbar() {
                             : "text-gray-500 hover:text-gray-900 transition "
                             } text-base`}
                         >
-                          Inicio
+                          Home
                         </span>
                       </Link>
                     </li>

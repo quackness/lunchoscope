@@ -14,15 +14,13 @@ export default function Banner() {
           </h1>
 
           <p className="mt-4 max-w-lg sm:text-xl sm:leading-relaxed">
-          Lunchoscope is a unique website that combines the excitement of astrology with the practicality of finding the perfect place to dine. By simply inputting your horoscope, Lunchoscope generates tailored restaurant recommendations in your vicinity.
+            Lunchoscope is a unique website that combines the excitement of astrology with the practicality of finding the perfect place to dine. By simply inputting your horoscope, Lunchoscope generates tailored restaurant recommendations in your vicinity.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4 text-center">
             <Link
               href="/login"
               className="block w-full rounded bg-green-500 px-12 py-3 text-sm font-medium text-white shadow hover:bg-green-600 focus:outline-none focus:ring active:bg-green-500 sm:w-auto">
-              href="/reserva"
-              className="block w-full rounded bg-[#0036FF] px-12 py-3 text-sm font-medium text-white shadow focus:outline-none focus:ring sm:w-auto">
               Login
             </Link>
           </div>

@@ -24,46 +24,46 @@ export default function LoginForm() {
             name: data.name,
             password: data.password
         });
-    
+
         try {
-            const response = await axios.post('http://localhost:3000/signup', {
+            const response = await axios.post('http://localhost:3000/registeruser', {
                 name: data.name,
                 email: data.email,
                 hashedPassword: data.password,
                 isAdmin: false,
                 sentimentLeft: 5,
                 subscribed: false,
-              }, {
+            }, {
                 headers: {
-                  'Content-Type': 'application/json'
+                    'Content-Type': 'application/json'
                 }
-              });
-              const user = response.data;
-              console.log(user)   
-    console.log("test")
-        //     if (!response.ok) {
-        //         throw new Error('Network response was not ok');
-        //     }
-    
-        //     const user = await response.json();
-        //     console.log(user)
-        //     router.push("/login");
-        // } catch (error) {
-        //     console.error('Error registering user:', error);
-        // }
-        
-        router.push('/login');
-      } catch (error) {
-        console.error('Error registering user:', error);
-      }
+            });
+            const user = response.data;
+            console.log(user)
+            console.log("test")
+            //     if (!response.ok) {
+            //         throw new Error('Network response was not ok');
+            //     }
+
+            //     const user = await response.json();
+            //     console.log(user)
+            //     router.push("/login");
+            // } catch (error) {
+            //     console.error('Error registering user:', error);
+            // }
+
+            router.push('/login');
+        } catch (error) {
+            console.error('Error registering user:', error);
+        }
     };
-    
+
     return (
         <Layout>
             <div className="flex justify-center mt-20 mx-auto max-w-screen-xl">
 
                 <form className="p-16 rounded shadow-md w-3/4 sm:w-3/6 md:w-3/6 lg:w-5/12 xl:w-2/6"
-                      onSubmit={registerUser}>
+                    onSubmit={registerUser}>
                     <Toaster richColors position="bottom-center" />
                     <div className="mb-4">
                         <label htmlFor="name" className="block text-gray-700 font-semibold ">Name</label>
@@ -106,7 +106,7 @@ export default function LoginForm() {
 
                     <div>
                         <button className="inline-flex justify-center rounded-md border border-transparent bg-green-100 px-5 py-2.5 text-sm font-medium text-green-900 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2"
-                                onClick={()=> {signIn("github")}}
+                            onClick={() => { signIn("github") }}
                         >
                             or Login with Github</button>
                     </div>

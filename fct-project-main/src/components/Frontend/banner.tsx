@@ -6,9 +6,9 @@ export default function Banner() {
     <section>
       <div className="mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-4">
         <div className="max-w-xl text-center sm:text-left lg:pl-12">
-          <h1 className="text-2xl font-extrabold sm:text-5xl">
+          <h1 className="text-2xl font-extrabold sm:text-4xl">
             Confused about a place to eat out ?
-            <strong className="block font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-lime-600 to-green-500">
+            <strong className="block font-extrabold text-transparent bg-clip-text to-green-500 bg-[#C900FF]">
               Lunchoscope!
             </strong>
           </h1>
@@ -21,6 +21,8 @@ export default function Banner() {
             <Link
               href="/login"
               className="block w-full rounded bg-green-500 px-12 py-3 text-sm font-medium text-white shadow hover:bg-green-600 focus:outline-none focus:ring active:bg-green-500 sm:w-auto">
+              href="/reserva"
+              className="block w-full rounded bg-[#0036FF] px-12 py-3 text-sm font-medium text-white shadow focus:outline-none focus:ring sm:w-auto">
               Login
             </Link>
           </div>
@@ -30,8 +32,8 @@ export default function Banner() {
             alt="banner"
             src="/img/lunchoscope.png"
             className="hidden lg:block"
-            width={600}
-            height={600}
+            width={800}
+            height={900}
           />
         </div>
       </div>

@@ -110,6 +110,8 @@ className="select select-bordered w-full max-w-xs">
   const handleSubscription = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log("here")
+    console.log(name);
+    
   };
 
   return (

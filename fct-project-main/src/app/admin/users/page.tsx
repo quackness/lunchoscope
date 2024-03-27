@@ -15,6 +15,73 @@ interface Users {
 const UsersPage = () => {
 
   const [users, setUsers] = useState<Users[]>([]);
+  const [showForm, setShowForm] = useState(false);
+const [name, setName] = useState("");
+const [email, setEmail] = useState("");
+const [password, setPassword] = useState("");
+const [isAdmin, setAdmin] = useState(false);
+const [sentiment, setSentiment] = useState("");
+const [subscriptionStatus, setsubscriptionStatus] = useState(false);
+
+  const toggleForm = () => {
+    setShowForm(!showForm);
+  };
+
+  const form = (<>
+<input 
+type="text"
+id="name"
+placeholder="Name" 
+className="input input-bordered w-full max-w-xs" 
+value={name}
+onChange={event => setName(event.target.value)}
+/>
+<input
+type="text" 
+id="email"
+placeholder="Email"
+className="input input-bordered w-full max-w-xs"
+value={email}
+onChange={event => setEmail(event.target.value)}
+/>
+<input 
+type="password" 
+id="password"
+placeholder="Password" 
+className="input input-bordered w-full max-w-xs" 
+value={password}
+onChange={event =>setPassword(event.target.value)}
+/>
+<select 
+  id="isAdmin" 
+  className="select select-bordered w-full max-w-xs"
+  value={isAdmin ? 'Admin' : 'User'}
+  onChange={event => setAdmin(event.target.value === 'Admin')}>
+        <option value=''>Role</option>
+        <option>Admin</option>
+        <option>User</option>
+</select>
+
+<input 
+type="text" 
+id="sentiment"
+placeholder="Enter sentiment" 
+className="input input-bordered w-full max-w-xs" 
+value={sentiment.toString()}
+onChange={event => setSentiment(parseInt(event.target.value) as number)}
+/>
+
+<select 
+id="subscription"
+className="select select-bordered w-full max-w-xs">
+  <option>Subscription status?</option>
+  <option>FREE</option>
+  <option>Paid</option>
+</select>
+<button type="submit" className="btn btn-secondary">Submit</button>
+</>
+  )
+
 
   useEffect(()=> {
     fetchUsers();
@@ -24,7 +91,6 @@ const UsersPage = () => {
     try {
       const usersList = await axios.get('http://localhost:3000/getUsers')
       const users = usersList.data;
-      console.log(users)
       setUsers(users);
     } catch (error) {
       console.error('Error with fetching users:', error);
@@ -41,11 +107,24 @@ const UsersPage = () => {
     }
   };
 
+  const handleSubscription = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    console.log("here")
+  };
+
   return (
   <>
-    <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg btn-primary">+ Add user</button>
+    {/* <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg btn-primary">+ Add user</button> */}
+
+
+    <label htmlFor="my_modal_7" className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg btn-primary" onClick={toggleForm}>+ Add user</label>
+    {showForm && (
+        <form className="form-container w-1/3" onSubmit={handleSubscription}>
+          {form}
+        </form>
+      )}
     <div className="overflow-x-auto">
-  <table className="table">
+  <table className="table w-2/3">
     {/* head */}
     <thead>
       <tr>
@@ -75,10 +154,10 @@ const UsersPage = () => {
   </tr>
       )   
     })}
-      
-     
+          
     </tbody>
   </table>
+
 </div>
 </>
 

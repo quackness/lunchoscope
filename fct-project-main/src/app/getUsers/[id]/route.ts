@@ -7,6 +7,28 @@ interface Request {
   url: string;
 }
 
+export async function GET(request: Request) {
+  console.log(request)
+
+  console.log(request.url)
+  const address = request.url.split('/');
+  const id = address[address.length - 1];
+  console.log("ID:", id);
+  const findUser = await prisma.user.findUnique({
+    where: {
+      id
+    }
+  });
+  console.log(findUser);
+  if (findUser) {
+    console.log(findUser);
+    return NextResponse.json(findUser);
+  } else {
+    return new Response("User not found", { status: 404 });
+  }
+}
+
+
 export async function DELETE(request: Request) {
   console.log(request)
   try {
@@ -14,18 +36,15 @@ export async function DELETE(request: Request) {
     const address = request.url.split('/');
     const id = address[address.length - 1];
     console.log("ID:", id);
-
-    // Use Prisma to delete the user with the specified ID
     const deletedUser = await prisma.user.delete({
       where: {
         id
       }
-    });
-
+    })
     console.log("User deleted:", deletedUser);
-    return new Response("User deleted successfully", { status: 200 });
+    return new Response("User deleted", { status: 200 });
   } catch (error) {
-    console.error("Error deleting user:", error);
-    return new Response("Error deleting user", { status: 500 });
+    console.error("Error:", error);
+    return new Response("Error", { status: 500 });
   }
 }

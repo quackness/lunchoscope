@@ -1,5 +1,6 @@
 import bcrypt from "bcrypt";
 import NextAuth, { AuthOptions } from "next-auth";
+import GithubProvider from "next-auth/providers/github";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import prisma from "@/libs/prisma"
@@ -49,10 +50,10 @@ const authOptions: AuthOptions = {
         return user;
       },
     }),
-    // GithubProvider({
-    //   clientId: process.env.GITHUB_ID ?? "",
-    //   clientSecret: process.env.GITHUB_SECRET ?? "",
-    // })
+    GithubProvider({
+      clientId: process.env.GITHUB_ID ?? "",
+      clientSecret: process.env.GITHUB_SECRET ?? "",
+    })
   ],
   // pages: {
   //   signIn: "/login",
@@ -81,6 +82,3 @@ export default NextAuthInstance;
 //   throw new Error("Function not implemented.");
 // }
 
-// 如果需要分别导出 GET 和 POST 处理程序，可以这样做
-// export const GET = NextAuthInstance;
-// export const POST = NextAuthInstance;

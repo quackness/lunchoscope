@@ -16,6 +16,7 @@ const UsersPage = () => {
 
   const [users, setUsers] = useState<Users[]>([]);
   const [showForm, setShowForm] = useState(false);
+  const [id, setId] = useState(null);
 const [name, setName] = useState("");
 const [email, setEmail] = useState("");
 const [password, setPassword] = useState("");
@@ -44,14 +45,6 @@ className="input input-bordered w-full max-w-xs"
 value={email}
 onChange={event => setEmail(event.target.value)}
 />
-<input 
-type="password" 
-id="password"
-placeholder="Password" 
-className="input input-bordered w-full max-w-xs" 
-value={password}
-onChange={event =>setPassword(event.target.value)}
-/>
 <select 
   id="isAdmin" 
   className="select select-bordered w-full max-w-xs"
@@ -61,15 +54,14 @@ onChange={event =>setPassword(event.target.value)}
         <option>Admin</option>
         <option>User</option>
 </select>
-
-<input 
-type="text" 
-id="sentiment"
-placeholder="Enter sentiment" 
-className="input input-bordered w-full max-w-xs" 
-value={sentiment.toString()}
-onChange={event => setSentiment(parseInt(event.target.value) as number)}
-/>
+<select className="select select-bordered w-full max-w-xs" 
+value={sentiment.toString()} 
+onChange={event => setSentiment(parseInt(event.target.value) as number)
+}>
+  <option>Sentiment</option>
+  <option>5</option>
+  <option>100</option>
+</select>
 
 <select 
 id="subscription"
@@ -107,21 +99,32 @@ className="select select-bordered w-full max-w-xs">
     }
   };
 
-  const handleSubscription = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleUpdate = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    //check the values
     console.log("here")
     console.log(name);
-    
+    console.log(email);
+    console.log(isAdmin);
+    console.log(sentiment);
+    console.log(subscriptionStatus);
+//construct the body namefrom db : name from the web 
+    const body = {
+      name,
+      email,
+      isAdmin,
+      sentimentLeft: sentiment,
+      subscribed: subscriptionStatus,
+    }
+    console.log(body)
+    axios.patch("route here", body)
+      .then(response => console.log(response))
   };
 
   return (
   <>
-    {/* <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg btn-primary">+ Add user</button> */}
-
-
-    <label htmlFor="my_modal_7" className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg btn-primary" onClick={toggleForm}>+ Add user</label>
     {showForm && (
-        <form className="form-container w-1/3" onSubmit={handleSubscription}>
+        <form className="form-container w-1/3" onSubmit={handleUpdate}>
           {form}
         </form>
       )}
@@ -150,7 +153,7 @@ className="select select-bordered w-full max-w-xs">
       <td>{user?.subscribed ? "Paid" : "FREE"}</td>
       <td>{user?.sentimentLeft}</td>
       <td>
-      <button className="btn btn-outline btn-accent">Edit</button>
+      <button htmlFor="my_modal_7" onClick={toggleForm} className="btn btn-outline btn-accent">Edit</button>
 <button className="btn btn-outline btn-error" onClick={() => handleDelete(user.id)}>Delete</button>
       </td>
   </tr>

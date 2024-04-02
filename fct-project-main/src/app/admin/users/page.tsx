@@ -73,6 +73,8 @@ onChange={event => setSentiment(parseInt(event.target.value) as number)
 <select 
 id="subscription"
 className="select select-bordered w-full max-w-xs"
+value={subscriptionStatus? 'Paid' : 'FREE'} 
+onChange={event => setsubscriptionStatus(event.target.value === 'Paid')}
 >
   <option>Subscription status?</option>
   <option>FREE</option>

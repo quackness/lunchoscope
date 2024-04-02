@@ -16,7 +16,7 @@ const UsersPage = () => {
 
   const [users, setUsers] = useState<Users[]>([]);
   const [showForm, setShowForm] = useState(false);
-  const [id, setId] = useState(null);
+  const [id, setId] = useState("");
 const [name, setName] = useState("");
 const [email, setEmail] = useState("");
 const [password, setPassword] = useState("");
@@ -24,7 +24,8 @@ const [isAdmin, setAdmin] = useState(false);
 const [sentiment, setSentiment] = useState("");
 const [subscriptionStatus, setsubscriptionStatus] = useState(false);
 
-  const toggleForm = () => {
+  const toggleForm = (id: string) => {
+    setId(id);
     setShowForm(!showForm);
   };
 
@@ -65,7 +66,8 @@ onChange={event => setSentiment(parseInt(event.target.value) as number)
 
 <select 
 id="subscription"
-className="select select-bordered w-full max-w-xs">
+className="select select-bordered w-full max-w-xs"
+>
   <option>Subscription status?</option>
   <option>FREE</option>
   <option>Paid</option>
@@ -103,6 +105,7 @@ className="select select-bordered w-full max-w-xs">
     event.preventDefault();
     //check the values
     console.log("here")
+    console.log(id);
     console.log(name);
     console.log(email);
     console.log(isAdmin);
@@ -110,6 +113,7 @@ className="select select-bordered w-full max-w-xs">
     console.log(subscriptionStatus);
 //construct the body namefrom db : name from the web 
     const body = {
+      _id: id,
       name,
       email,
       isAdmin,
@@ -117,8 +121,9 @@ className="select select-bordered w-full max-w-xs">
       subscribed: subscriptionStatus,
     }
     console.log(body)
-    axios.patch("route here", body)
+    axios.patch(`http://localhost:3000/getUsers/${id}`, body)
       .then(response => console.log(response))
+      .catch(error => console.log(error))
   };
 
   return (
@@ -153,7 +158,7 @@ className="select select-bordered w-full max-w-xs">
       <td>{user?.subscribed ? "Paid" : "FREE"}</td>
       <td>{user?.sentimentLeft}</td>
       <td>
-      <button htmlFor="my_modal_7" onClick={toggleForm} className="btn btn-outline btn-accent">Edit</button>
+      <button htmlFor="my_modal_7" onClick={() => toggleForm(user.id)} className="btn btn-outline btn-accent">Edit</button>
 <button className="btn btn-outline btn-error" onClick={() => handleDelete(user.id)}>Delete</button>
       </td>
   </tr>

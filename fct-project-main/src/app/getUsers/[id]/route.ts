@@ -48,3 +48,33 @@ export async function DELETE(request: Request) {
     return new Response("Error", { status: 500 });
   }
 }
+
+
+export async function PATCH(request: Request) {
+  // https://www.prisma.io/docs/orm/prisma-client/queries/crud
+  try {
+    console.log("req", request.url)
+    const address = request.url.split('/');
+    const id = address[address.length - 1];
+    const { name, email, isAdmin, sentimentLeft, subscribed } = await request.json();
+    const updateUser = await prisma.user.update({
+      where: {
+        id,
+      },
+      data: {
+        name,
+        email,
+        isAdmin,
+        sentimentLeft,
+        subscribed
+      },
+    });
+    console.log("User", updateUser);
+    return new Response("User updated", { status: 200 });
+  } catch (error) {
+    console.error(error)
+    return new Response("Error updating user", { status: 500 });
+  }
+
+
+}

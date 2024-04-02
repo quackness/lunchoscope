@@ -126,6 +126,7 @@ className="select select-bordered w-full max-w-xs"
       await axios.patch(`http://localhost:3000/getUsers/${id}`, body);
       console.log("updated");
       fetchUsers();
+      setShowForm(!showForm);
     } catch(error) {
       console.log(error)
     }

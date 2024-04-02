@@ -2,17 +2,19 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Layout from '../components/Frontend/layout';
-import { Toaster, toast } from 'sonner'
-import { signIn } from "next-auth/react";
+import { Toaster } from 'sonner';
+import { toast } from 'react-toastify'; 
+import { signIn, signOut, useSession } from "next-auth/react";
 import Link from 'next/link';
 
 export default function LoginForm() {
     const router = useRouter();
+    const {data: session} =useSession()
     const [data, setData] = useState({
         email: "",
         password: ""
     });
-
+console.log(session)
     const handleSubmit = async (e: any) => {
         e.preventDefault();
 
@@ -71,19 +73,18 @@ export default function LoginForm() {
                         <button type="submit" className="inline-flex justify-center rounded-md border border-transparent bg-green-100 px-5 py-2.5 text-sm font-medium text-green-900 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2">
                             Login
                         </button>
-
+                        <button onClick={() => signOut()}>Sign Out</button>
                         <p>Don't have account?</p>
                         <Link href="/signup" className=" text-violet-600 hover:underline">Click here to Sign up.</Link>
                     </div>
 
-                    <div>
+                </form>
+                <div>
                         <button className="inline-flex justify-center rounded-md border border-transparent bg-green-100 px-5 py-2.5 text-sm font-medium text-green-900 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2"
                                 onClick={()=> {signIn("github")}}
                         >
                             or Login with Github</button>
                     </div>
-
-                </form>
             </div>
         </Layout>
     );

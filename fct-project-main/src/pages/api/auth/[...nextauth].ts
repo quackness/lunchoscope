@@ -1,21 +1,18 @@
 import bcrypt from "bcrypt";
-import NextAuth, { AuthOptions } from "next-auth";
+import NextAuth, {  Account, User as AuthUser } from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
-import prisma from "@/libs/prisma"
-// import { PrismaClient } from '@prisma/client'
+// import prisma from "@/libs/prisma";
 
-// const prisma = new PrismaClient()
+import { PrismaClient } from '@prisma/client'
 
-type UserWhereUniqueInput = {
-  id?: string;
-  email?: string;
-};
+const prisma = new PrismaClient()
 
 
-const authOptions: AuthOptions = {
-  adapter: PrismaAdapter(prisma),
+
+const authOptions: any = {
+  // adapter: PrismaAdapter(prisma),
   providers: [
     CredentialsProvider({
       name: "credentials",
@@ -32,7 +29,7 @@ const authOptions: AuthOptions = {
         const user = await prisma.user.findUnique({
           where: {
             email: credentials.email,
-          } as UserWhereUniqueInput,
+          }
         });
 
         if (!user || !user?.hashedPassword) {
@@ -55,19 +52,51 @@ const authOptions: AuthOptions = {
       clientSecret: process.env.GITHUB_SECRET ?? "",
     })
   ],
-  // pages: {
-  //   signIn: "/login",
-  //   error: "/login",
-  // },
+  callbacks: {
+    async signIn({ user, account }: { user: AuthUser; account: Account }) {
+      console.log(user)
+      if (account?.provider == "credentials") {
+        return true;
+      }
+      if (account?.provider == "github") {
+        
+        try {
+          if (!user.email) {
+            throw new Error("User email is missing.");
+          }
+          const existingUser = await prisma.user.findUnique({   
+            where: {
+            email: user.email,
+          }  });
+          if (!existingUser) {
+            await prisma.user.create({
+              data: {
+                name: user.name || '',
+                email: user.email,
+                hashedPassword: "",
+                isAdmin: false,
+                sentimentLeft: 5,
+                subscribed: false,
+              } ,
+            });
+          }
+          
+          return true;
+        } catch (err) {
+          console.log("Error saving user", err);
+          return false;
+        }
+      }
+    }
+  },
+
+  
   session: {
     strategy: "jwt",
-    // maxAge: 30 * 24 * 60 * 60,
-    // updateAge: 24 * 60 * 60,
   },
-  jwt: {
-    secret: process.env.NEXTAUTH_JWT_SECRET,
-  },
-  secret: process.env.NEXTAUTH_SECRET,
+    secret: process.env.JWT_SECRET,
+
+ 
 };
 
 const NextAuthInstance = NextAuth(authOptions);

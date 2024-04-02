@@ -27,7 +27,13 @@ const [subscriptionStatus, setsubscriptionStatus] = useState(false);
   const toggleForm = (id: string) => {
     setId(id);
     setShowForm(!showForm);
+    //scroll up yp see the form
+  const formElement = document.getElementById('form-container');
+  if (formElement) {
+    formElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
   };
+
 
   const form = (<>
 <input 
@@ -72,7 +78,7 @@ className="select select-bordered w-full max-w-xs"
   <option>FREE</option>
   <option>Paid</option>
 </select>
-<button type="submit" className="btn btn-secondary">Submit</button>
+<button type="submit" className="btn btn-secondary flex justify-center">Submit</button>
 </>
   )
 
@@ -82,6 +88,7 @@ className="select select-bordered w-full max-w-xs"
   }, []);
 
   const fetchUsers = async () => {
+
     try {
       const usersList = await axios.get('http://localhost:3000/getUsers')
       const users = usersList.data;
@@ -89,6 +96,8 @@ className="select select-bordered w-full max-w-xs"
     } catch (error) {
       console.error('Error with fetching users:', error);
     }
+   
+  
   }
 
   const handleDelete = async (id: String) => {
@@ -101,16 +110,8 @@ className="select select-bordered w-full max-w-xs"
     }
   };
 
-  const handleUpdate = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleUpdate = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    //check the values
-    console.log("here")
-    console.log(id);
-    console.log(name);
-    console.log(email);
-    console.log(isAdmin);
-    console.log(sentiment);
-    console.log(subscriptionStatus);
 //construct the body namefrom db : name from the web 
     const body = {
       _id: id,
@@ -121,19 +122,26 @@ className="select select-bordered w-full max-w-xs"
       subscribed: subscriptionStatus,
     }
     console.log(body)
-    axios.patch(`http://localhost:3000/getUsers/${id}`, body)
-      .then(response => console.log(response))
-      .catch(error => console.log(error))
+    try {
+      await axios.patch(`http://localhost:3000/getUsers/${id}`, body);
+      console.log("updated");
+      fetchUsers();
+    } catch(error) {
+      console.log(error)
+    }
+  
   };
 
   return (
   <>
     {showForm && (
-        <form className="form-container w-1/3" onSubmit={handleUpdate}>
+        <div className="flex justify-center mt-8 mb-8">
+        <form id="form-container" className="form-container w-1/3" onSubmit={handleUpdate}>
           {form}
         </form>
+        </div>
       )}
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto flex justify-center mt-8 mb-8">
   <table className="table w-2/3">
     {/* head */}
     <thead>

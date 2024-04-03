@@ -9,10 +9,15 @@ import SelectSign from "@/components/Frontend/selectSign";
 import ZodiacDisplay from "@/components/Frontend/zodiacDisplay";
 
 import DisplayRestaurants from "@/components/Frontend/displayRestaurants";
+import { UserProvider } from "@/Context/userAuth";
 
 
 const Home: React.FC = () => {
+
+
+
   return (
+
     <Layout>
       <motion.div
         initial={{ y: -100 }}

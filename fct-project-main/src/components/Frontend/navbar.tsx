@@ -2,10 +2,13 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import { useAuth } from "@/Context/userAuth";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const router = useRouter();
+
+  const { user } = useAuth();
 
   return (
     <header aria-label="Site Header" className="bg-[#4a00ff]" id="header">
@@ -13,7 +16,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between gap-4 lg:gap-10">
           <div className="flex lg:w-0 lg:flex-1">
             <Link href="/">
-            <span className="block font-extrabold text-2xl text-white">
+              <span className="block font-extrabold text-2xl text-white">
                 Lunchoscope
               </span>
               {/* <Image
@@ -80,24 +83,33 @@ export default function Navbar() {
                 Pricing
               </span>
             </Link>
-            <Link href="/admin/users" passHref>
-              <span
-                className={`${router.pathname === "/admin/users"
-                  ? "text-green-500"
-                  : "text-gray-500 hover:text-gray-900 transition "
-                  } text-base`}
-              >
-                Admin
-              </span>
-            </Link>
+            {user?.isAdmin && (
+              <Link href="/admin/users" passHref>
+                <span
+                  className={`${router.pathname === "/admin/users"
+                    ? "text-green-500"
+                    : "text-gray-500 hover:text-gray-900 transition "
+                    } text-base`}
+                >
+                  Admin
+                </span>
+              </Link>
+            )}
           </nav>
 
           <div className="hidden flex-1 items-center justify-end gap-4 sm:flex">
-            <Link href="/login" passHref>
+            {user ? (
+
               <span className="rounded-lg bg-green-500 transition hover:bg-green-600 px-5 py-2 text-sm font-medium text-white">
-                Login
+                Welcome Back, <span className="capitalize">{user?.name}</span>
               </span>
-            </Link>
+            ) : (
+              <Link href="/login" passHref>
+                <span className="rounded-lg bg-green-500 transition hover:bg-green-600 px-5 py-2 text-sm font-medium text-white">
+                  Login
+                </span>
+              </Link>
+            )}
           </div>
 
           <div className="md:hidden">

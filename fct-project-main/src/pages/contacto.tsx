@@ -1,8 +1,11 @@
 import Layout from '../components/Frontend/layout'
 import ContactForm from '@/components/Frontend/contactForm'
 import Link from 'next/link'
+import { useEffect } from 'react'
 
 const Contacto: React.FC = () => {
+
+
   return (
     <Layout>
       <div className="mx-auto max-w-screen-xl">

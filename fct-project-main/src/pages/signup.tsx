@@ -40,19 +40,7 @@ export default function LoginForm() {
             });
             const user = response.data;
             console.log(user)
-            console.log("test")
-            //     if (!response.ok) {
-            //         throw new Error('Network response was not ok');
-            //     }
-
-            //     const user = await response.json();
-            //     console.log(user)
-            //     router.push("/login");
-            // } catch (error) {
-            //     console.error('Error registering user:', error);
-            // }
-
-            router.push('/login');
+            router.push('/');
         } catch (error) {
             console.error('Error registering user:', error);
         }

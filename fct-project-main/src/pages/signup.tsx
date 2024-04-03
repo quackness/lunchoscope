@@ -104,13 +104,14 @@ export default function LoginForm() {
                         <Link href="/login" className=" text-violet-600 hover:underline">Log in here.</Link>
                     </div>
 
-                    <div>
+                    
+                </form>
+                <div>
                         <button className="inline-flex justify-center rounded-md border border-transparent bg-green-100 px-5 py-2.5 text-sm font-medium text-green-900 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2"
                             onClick={() => { signIn("github") }}
                         >
                             or Login with Github</button>
                     </div>
-                </form>
             </div>
         </Layout>
 

@@ -1,13 +1,18 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Layout from '../components/Frontend/layout';
 import { Toaster } from 'sonner';
 import { toast } from 'react-toastify'; 
 import { signIn, signOut, useSession } from "next-auth/react";
 import Link from 'next/link';
+import axios from 'axios';
+import { useAuth } from '@/Context/userAuth';
 
 export default function LoginForm() {
+
+    const { addUser } = useAuth();
+
     const router = useRouter();
     const {data: session} =useSession()
     const [data, setData] = useState({
@@ -31,13 +36,34 @@ console.log(session)
         }
 
         try {
-            const res = await signIn('credentials', { email, password, redirect: false });
+            // const res = await signIn('credentials', { email, password, redirect: false });
 
-            if (res?.error == null) {
-                router.push('/');
-            } else {
-                toast.error('Error occurred while logging in');
+            // console.log("login res", res);
+
+
+            // if (res?.error == null) {
+            //     router.push('/');
+            // } else {
+            //     toast.error('Error occurred while logging in');
+            // }
+            const response = await axios.post('http://localhost:3000/loginuser', { email, password })
+            console.log("login res", response);
+
+            const { user } = response.data;
+
+            if (response.data.success) {
+                toast.success('You have logged in successfully!')
+                addUser(user);
+                console.log("Added");
+
+                // router.push('/')
             }
+            else {
+                toast.error(response.data.msg)
+            }
+
+
+
         } catch (error) {
             console.log(error);
         }
@@ -81,7 +107,7 @@ console.log(session)
                 </form>
                 <div>
                         <button className="inline-flex justify-center rounded-md border border-transparent bg-green-100 px-5 py-2.5 text-sm font-medium text-green-900 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2"
-                                onClick={()=> {signIn("github")}}
+                            onClick={() => { signIn("github") }}
                         >
                             or Login with Github</button>
                     </div>

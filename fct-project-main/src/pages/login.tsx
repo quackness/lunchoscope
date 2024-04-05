@@ -19,6 +19,7 @@ export default function LoginForm() {
         email: "",
         password: ""
     });
+    
 console.log(session)
     const handleSubmit = async (e: any) => {
         e.preventDefault();

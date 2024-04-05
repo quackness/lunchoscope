@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function Banner() {
   return (
     <section>
-      <div className="mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-4">
+      <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:flex lg:items-center lg:px-4">
         <div className="max-w-xl text-center sm:text-left lg:pl-12">
           <h1 className="text-2xl font-extrabold sm:text-4xl">
             Confused about a place to eat out ?
@@ -20,7 +20,7 @@ export default function Banner() {
           <div className="mt-8 flex flex-wrap gap-4 text-center">
             <Link
               href="/login"
-              className="block w-full rounded bg-green-500 px-12 py-3 text-sm font-medium text-white shadow hover:bg-green-600 focus:outline-none focus:ring active:bg-green-500 sm:w-auto">
+              className="sm:hidden block w-full rounded bg-green-500 px-12 py-3 text-sm font-medium text-white shadow hover:bg-green-600 focus:outline-none focus:ring active:bg-green-500 sm:w-auto">
               Login
             </Link>
           </div>

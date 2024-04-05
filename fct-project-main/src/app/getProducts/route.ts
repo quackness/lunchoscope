@@ -12,7 +12,8 @@ export async function GET(request: any) {
   });
 
   const prices = await stripe.prices.list({
-    limit: 4
+    limit: 3,
+
   })
   return NextResponse.json(prices.data)
 

@@ -1,6 +1,9 @@
 'use client';
-import React, {useEffect} from 'react';
+import React from 'react';
 import { useAuth } from '@/Context/userAuth';
+import Success1 from '@/components/Frontend/success1';
+
+
 
 const Success = () => {
 
@@ -11,7 +14,7 @@ const Success = () => {
 
   return (
     
-    <div>Payment Success</div>
+   <Success1 />
   )
 }
 

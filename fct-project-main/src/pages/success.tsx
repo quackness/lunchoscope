@@ -1,6 +1,7 @@
 import React from 'react'
+"use client"
 
-const Success = () => {
+export default function Success() {
   return (
     <div>
       test
@@ -8,4 +9,4 @@ const Success = () => {
   )
 }
 
-export default Success
+

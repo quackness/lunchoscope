@@ -44,30 +44,38 @@ const PricingCard = ({ price }: PricingCardProps) => {
               className="h-5 w-5 flex-shrink-0 text-green-500 ml-2"
               aria-hidden="true"
             />
-            <span className="text-sm text-gray-500">20% discount</span>
+            <span className="text-sm text-gray-500">LiveChat Support</span>
           </div>
           <div className="flex space-x-3">
             <AiFillCheckCircle
               className="h-5 w-5 flex-shrink-0 text-green-500 ml-2"
               aria-hidden="true"
             />
-            <span className="text-sm text-gray-500">Unlimited Sentiment Analysis</span>
+            <span className="text-sm text-gray-500">100 Sentiment Analysis</span>
           </div>
-        </div>
-      );
-    } else if (price.nickname === "Lunchoscope Monthly Subscription") {
-      return (
-        <div className="mt-6 space-y-4">     
           <div className="flex space-x-3">
             <AiFillCheckCircle
               className="h-5 w-5 flex-shrink-0 text-green-500 ml-2"
               aria-hidden="true"
             />
-            <span className="text-sm text-gray-500">Unlimited Sentiment Analysis</span>
+            <span className="text-sm text-gray-500">Partner Discounts</span>
           </div>
         </div>
       );
-    }
+    } 
+    // else if (price.nickname === "Lunchoscope Monthly Subscription") {
+    //   return (
+    //     <div className="mt-6 space-y-4">     
+    //       <div className="flex space-x-3">
+    //         <AiFillCheckCircle
+    //           className="h-5 w-5 flex-shrink-0 text-green-500 ml-2"
+    //           aria-hidden="true"
+    //         />
+    //         <span className="text-sm text-gray-500">Unlimited Sentiment Analysis</span>
+    //       </div>
+    //     </div>
+    //   );
+    // }
   }
 
 // POST request 
@@ -104,7 +112,7 @@ console.log("Testing test")
             price.nickname === "FREE Trial" ?
            <button className="mt-8 flex w-full justify-center rounded-md border border-transparent bg-[#f1592a] py-2 px-4 text-sm font-medium text-white shadow-sm">Create FREE trial</button>
           :
-          <button className="mt-8 flex w-full justify-center rounded-md border border-transparent bg-[#f1592a] py-2 px-4 text-sm font-medium text-white shadow-sm" onClick={handleSubscription}>
+          <button className="mt-8 flex w-full justify-center rounded-md border border-transparent btn btn-accent py-2 px-4 text-sm font-medium text-white shadow-sm" onClick={handleSubscription}>
              Subscribe
           </button>
 }

@@ -33,7 +33,10 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
      
           await prisma.user.update({
             where: { email: customerEmail },
-            data: { subscribed: true }, 
+            data: { 
+              sentimentLeft: 100,
+              subscribed: true
+             }, 
           });
 
           console.log(`Updated payment status for user with email ${customerEmail}`);

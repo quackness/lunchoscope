@@ -12,8 +12,8 @@ export default function Navbar() {
   const { user } = useAuth();
 
   return (
-    <header aria-label="Site Header" className="bg-[#4a00ff]" id="header">
-      <div className="mx-auto max-w-screen-xl p-4">
+    <header aria-label="Site Header" className="bg-violet-600" id="header">
+      <div className="mx-auto max-w-screen-xl p-6">
         <div className="flex items-center justify-between gap-4 lg:gap-10">
           <div className="flex lg:w-0 lg:flex-1">
             <Link href="/">
@@ -37,49 +37,20 @@ export default function Navbar() {
             <Link href="/" passHref>
               <span
                 className={`${router.pathname === "/"
-                  ? "text-white"
-                  : "text-gray-500 hover:text-gray-900 transition"
-                  }  text-base`}
+                  ? "text-yellow-300"
+                  : "text-yellow-300 hover:text-gray-900 transition"
+                  }  text-lg`}
               >
                 Home
               </span>
             </Link>
-            <Link href="/carta" passHref>
-              <span
-                className={`${router.pathname === "/carta"
-                  ? "text-green-500"
-                  : "text-gray-500 hover:text-gray-900 transition "
-                  } text-base`}
-              >
-                About
-              </span>
-            </Link>
-            <Link href="/reserva" passHref>
-              <span
-                className={`${router.pathname === "/reserva"
-                  ? "text-green-500"
-                  : "text-gray-500 hover:text-gray-900 transition"
-                  }  text-base`}
-              >
-                Services
-              </span>
-            </Link>
-            <Link href="/contacto" passHref>
-              <span
-                className={`${router.pathname === "/contacto"
-                  ? "text-green-500"
-                  : "text-gray-500 hover:text-gray-900 transition"
-                  }  text-base`}
-              >
-                Contact
-              </span>
-            </Link>
+           
             <Link href="/pricing" passHref>
               <span
                 className={`${router.pathname === "/pricing"
-                  ? "text-green-500"
-                  : "text-gray-500 hover:text-gray-900 transition "
-                  } text-base`}
+                  ? "text-yellow-300"
+                  : "text-yellow-300 hover:text-gray-900 transition "
+                  } text-lg`}
               >
                 Pricing
               </span>
@@ -101,12 +72,12 @@ export default function Navbar() {
           <div className="hidden flex-1 items-center justify-end gap-4 sm:flex">
             {user ? (
 
-              <span className="rounded-lg bg-green-500 transition hover:bg-green-600 px-5 py-2 text-sm font-medium text-white">
+              <span className="rounded-lg bg-amber-400 transition hover:bg-amber-500 px-5 py-2 text-sm font-medium text-white">
                 Welcome Back, <span className="capitalize">{user?.name}</span>
               </span>
             ) : (
               <Link href="/login" passHref>
-                <span className="rounded-lg bg-green-500 transition hover:bg-green-600 px-5 py-2 text-sm font-medium text-white">
+                <span className="rounded-lg bg-amber-400 transition hover:bg-amber-500 px-5 py-2 text-base font-medium text-white">
                   Login
                 </span>
               </Link>
@@ -155,44 +126,19 @@ export default function Navbar() {
                       </Link>
                     </li>
                     <li>
-                      <Link href="/carta" passHref>
+                      <Link href="/pricing" passHref>
                         <span
                           onClick={() => setMenuOpen(false)}
-                          className={`${router.pathname === "/carta"
+                          className={`${router.pathname === "/pricing"
                             ? "text-green-500"
                             : "text-gray-500 hover:text-gray-900 transition"
                             }  text-base`}
                         >
-                          Carta
+                          Pricing
                         </span>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/reserva" passHref>
-                        <span
-                          onClick={() => setMenuOpen(false)}
-                          className={`${router.pathname === "/reserva"
-                            ? "text-green-500"
-                            : "text-gray-500 hover:text-gray-900 transition"
-                            }  text-base`}
-                        >
-                          Reserva
-                        </span>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/contacto" passHref>
-                        <span
-                          onClick={() => setMenuOpen(false)}
-                          className={`${router.pathname === "/contacto"
-                            ? "text-green-500"
-                            : "text-gray-500 hover:text-gray-900 transition "
-                            } text-base`}
-                        >
-                          Contacto
-                        </span>
-                      </Link>
-                    </li>
+                        </Link>
+                   </li>
+                   
                   </ul>
                 </nav>
               </div>

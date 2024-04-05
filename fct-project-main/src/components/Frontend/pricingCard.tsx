@@ -1,10 +1,12 @@
 'use client';
 import axios from 'axios';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 // import {Navbar} from 
 import {AiFillCheckCircle} from 'react-icons/ai';
 import { useAuth } from '@/Context/userAuth';
 import Email from 'next-auth/providers/email';
+import { jwtVerify } from 'jose';
+import cookie from 'cookie-cutter';
 
 //https://github.com/bwestwood11/stripe-checkout-nextjs13/blob/main/app/components/PricingCard.jsx
 //test payments with the credit cards https://docs.stripe.com/testing#cards
@@ -21,7 +23,35 @@ interface PricingCardProps {
 const PricingCard = ({ price }: PricingCardProps) => {
 
   const { user } = useAuth();
-  console.log(user)
+  // console.log(user)
+
+
+  const { addUser } = useAuth();
+
+  const fetchDataOnLoad = async () => {
+
+    const token = cookie.get('authToken');
+
+    if (!token) {
+      return;
+    }
+
+    const decode = await jwtVerify(token, new TextEncoder().encode('testpassword'))
+
+    const user = decode.payload;
+    if (decode.payload) {
+      addUser(user);
+    }
+
+  }
+
+  useEffect(() => {
+
+    fetchDataOnLoad();
+
+
+  }, [])
+
 
   const dynamicSubTitle = (price: { nickname: string; }) => {
     if (price.nickname === "FREE Trial") {

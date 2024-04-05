@@ -9,13 +9,16 @@ export async function POST(request: any) {
   console.log(">>", stripe)
   let data = await request.json();
   let priceId = data.priceId
+  let email = data.email
+  console.log(email)
   const session = await stripe.checkout.sessions.create({
     line_items: [
         {
             price: priceId,
-            quantity: 1
+            quantity: 1,
         }
     ],
+    customer_email: email,
   mode: 'subscription',
   //change those for production
   success_url: 'http://localhost:3000',

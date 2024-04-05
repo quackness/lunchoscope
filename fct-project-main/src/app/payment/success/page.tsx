@@ -1,18 +1,21 @@
-// import React, {useEffect} from 'react'
-// import axios from 'axios';
-
-// const Success = () => {
-
-//   const success = () => {
-  
-//   }
-  
-//   useEffect(()=> success(), []);
+'use client';
+import React from 'react';
+import { useAuth } from '@/Context/userAuth';
+import Success1 from '@/components/Frontend/success1';
 
 
-//   return (
-//     <div>Payment Success</div>
-//   )
-// }
 
-// export default Success
+const Success = () => {
+
+  console.log(useAuth)
+
+  const { user } = useAuth();
+  console.log(user)
+
+  return (
+    
+   <Success1 />
+  )
+}
+
+export default Success;

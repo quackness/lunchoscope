@@ -3,10 +3,6 @@ import { NextResponse } from "next/server";
 import JWT from 'jsonwebtoken';
 import { SignJWT } from "jose";
 
-
-
-
-
 export async function POST(req:any, res:any){
 
     try {

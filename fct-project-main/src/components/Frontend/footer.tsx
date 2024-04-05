@@ -25,54 +25,11 @@ export default function Footer() {
             </div>
 
             <p className="mx-auto mt-6 max-w-md text-center leading-relaxed text-gray-500 lg:text-left">
-              Nuestras recetas únicas y de alta calidad te transportarán a un viaje culinario por China.
+            Discover your cosmic cravings, dine with delight!
             </p>
           </div>
 
-          <nav aria-label="Footer Nav" className="mt-12 lg:mt-0">
-            <ul className="flex flex-wrap justify-center gap-6 md:gap-8 lg:justify-end lg:gap-12">
-              <li>
-                <Link
-                  className="text-gray-700 transition hover:text-green-500"
-                  href="/"
-                >
-                  Inicio
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  className="text-gray-700 transition hover:text-green-500"
-                  href="/carta"
-                >
-                  Carta
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  className="text-gray-700 transition hover:text-green-500"
-                  href="/reserva"
-                >
-                  Reserva
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  className="text-gray-700 transition hover:text-green-500"
-                  href="/contacto"
-                >
-                  Contacto
-                </Link>
-              </li>
-            </ul>
-          </nav>
         </div>
-
-        <p className="mt-12 text-center text-sm text-gray-500 lg:text-right">
-          Copyright &copy; 2024. All rights reserved.
-        </p>
       </div>
     </footer>
   );

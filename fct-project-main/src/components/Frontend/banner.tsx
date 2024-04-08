@@ -7,7 +7,7 @@ export default function Banner() {
       <div className="mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-4">
         <div className="max-w-xl text-center sm:text-left lg:pl-12">
           <h1 className="text-2xl font-extrabold sm:text-4xl">
-            Confused about a place to eat out ?
+            Confused about a place to eat out?
             <strong className="block font-extrabold text-transparent bg-clip-text to-green-500 bg-[#C900FF]">
               Lunchoscope!
             </strong>

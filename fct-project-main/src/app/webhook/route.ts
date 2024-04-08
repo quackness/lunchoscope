@@ -48,7 +48,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
         console.log(`Unhandled event type: ${event.type}`);
     }
 
-    return Response.json({ received: true });
+    return Response.json({ received: true, user: user });
   } catch (error) {
     console.error('Error handling webhook:', error);
     return new Response(`Webhook Error: ${error.message}`, {status: 400});

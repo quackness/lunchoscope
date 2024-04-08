@@ -18,7 +18,7 @@ import axios from 'axios';
 const Home: React.FC = () => {
 
   const { addUser, user } = useAuth();
-  console.log("user", user?.id)
+  console.log("user", user)
 
   console.log("user", user?.subscribed)
 

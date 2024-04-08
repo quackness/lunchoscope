@@ -1,5 +1,5 @@
 "use client"
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Layout from '../components/Frontend/layout';
 import { Toaster } from 'sonner';
@@ -19,7 +19,29 @@ export default function LoginForm() {
         email: "",
         password: ""
     });
+
+    const handleGithubLogin =()=>{
+        signIn("github")
+
+        if(session){
+            console.log("test", session);
+            
+        }
+    }
+
+    const findUserOfGithub = async () =>{
+
+        if(session){
+            const response = await axios.post("http://localhost:3000/findgituser", {email: session?.user?.email})
+        
+        }
+            
+    }
     
+    useEffect(()=>{
+        findUserOfGithub();
+    }, [session])
+
 console.log(session)
     const handleSubmit = async (e: any) => {
         e.preventDefault();
@@ -108,7 +130,7 @@ console.log(session)
                 </form>
                 <div>
                         <button className="inline-flex justify-center rounded-md border border-transparent bg-green-100 px-5 py-2.5 text-sm font-medium text-green-900 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2"
-                            onClick={() => { signIn("github") }}
+                            onClick={handleGithubLogin}
                         >
                             or Login with Github</button>
                     </div>

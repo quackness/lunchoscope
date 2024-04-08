@@ -20,7 +20,7 @@ const Home: React.FC = () => {
   const { addUser, user } = useAuth();
   console.log("user", user?.id)
 
-
+  console.log("user", user?.subscribed)
 
   const [updateUser, setUpdateUser] = useState({});
 
@@ -74,7 +74,6 @@ const Home: React.FC = () => {
         animate={{ y: 0 }}
         transition={{ duration: 1 }}
       >
-        {/* {user && <SentimentBanner userSentiment={user?.sentimentLeft} userAccount={user?.subscribed}/>} */}
         {user && <SentimentBanner userInfo={updateUser} />}
         <Banner />
       </motion.div>

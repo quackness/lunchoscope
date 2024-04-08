@@ -6,14 +6,45 @@ import { motion } from 'framer-motion'
 import SelectSign from "@/components/Frontend/selectSign";
 import ZodiacDisplay from "@/components/Frontend/zodiacDisplay";
 import DisplayRestaurants from "@/components/Frontend/displayRestaurants";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { jwtVerify } from 'jose';
 import cookie from 'cookie-cutter';
 import { useAuth } from "@/Context/userAuth";
+import SentimentBanner from "@/components/Frontend/sentimentBanner";
+import axios from 'axios';
+
+
 
 const Home: React.FC = () => {
 
-  const { addUser } = useAuth();
+  const { addUser, user } = useAuth();
+  console.log("user", user?.id)
+
+  console.log("user", user?.subscribed)
+
+  const [updateUser, setUpdateUser] = useState({});
+
+  useEffect(()=> {
+    if (!user?.id) {
+      return;
+    }
+    fetchUsers();
+  }, [user?.id]);
+
+  const fetchUsers = async () => {
+    try {
+      const userState = await axios.get(`http://localhost:3000/getUsers/${user.id}`)
+      const person : String = userState.data;
+      setUpdateUser(person);
+    } catch (error) {
+      console.error('Error with fetching users:', error);
+    }
+  }
+
+  console.log(">>", updateUser)
+
+
+
 
   const fetchDataOnLoad = async () => {
 
@@ -29,14 +60,10 @@ const Home: React.FC = () => {
     if (decode.payload) {
       addUser(user);
     }
-
   }
 
   useEffect(() => {
-
     fetchDataOnLoad();
-
-
   }, [])
 
   return (
@@ -47,6 +74,7 @@ const Home: React.FC = () => {
         animate={{ y: 0 }}
         transition={{ duration: 1 }}
       >
+        {user && <SentimentBanner userInfo={updateUser} />}
         <Banner />
       </motion.div>
       <SelectSign />

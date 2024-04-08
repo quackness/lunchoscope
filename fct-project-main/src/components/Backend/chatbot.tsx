@@ -114,7 +114,7 @@ export default function ChatBot() {
                   <input
                     type="text"
                     className="w-full rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding mr-2 px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-green-300"
-                    placeholder="Escribe tu mensaje"
+                    placeholder="Type your message here..."
                     value={value}
                     onChange={handleInput}
                     onKeyDown={handleKeyDown}

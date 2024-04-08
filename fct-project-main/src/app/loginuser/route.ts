@@ -1,3 +1,4 @@
+import  bcrypt  from 'bcrypt';
 import { PrismaClient } from "@prisma/client";
 import { NextResponse } from "next/server";
 import JWT from 'jsonwebtoken';
@@ -20,18 +21,30 @@ export async function POST(req:any, res:any){
     const userExists = await prisma.user.findUnique({where: {email: email}});
     
     console.log("exists", userExists);
+
+    const passwordsMatch = await bcrypt.compare(password, userExists?.hashedPassword);
+
+    console.log("match", passwordsMatch);
     
-    if(userExists && password === userExists.hashedPassword){
+
+
+    if(userExists && passwordsMatch){
 
         // const token = await JWT.sign({id: userExists.id }, "testpassword", { expiresIn: "1d" });
 
         // Used jose library because JWT wasn't working in middleware.ts
 
         const token = await new SignJWT(userExists).setProtectedHeader({ alg: 'HS256', typ: 'JWT' }).sign(new TextEncoder().encode('testpassword'));
-        console.log(token);
         
-        
-        return NextResponse.json({success: true, msg:"User successfully logged in", user: userExists}, {
+        return NextResponse.json({success: true, 
+            msg:"User successfully logged in", 
+            user: {
+                email: userExists.email, 
+                name: userExists.name, 
+                isAdmin: userExists.isAdmin,
+                sentimentLeft: userExists.sentimentLeft,
+                subscribed: userExists.subscribed
+            }}, {
             headers:{
                 'Set-Cookie':`authToken=${token}`
             }

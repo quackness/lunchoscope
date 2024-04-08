@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Layout from '@/components/Frontend/layout';
 import { Toaster } from 'sonner';
-import { toast } from 'react-toastify'; 
+import { toast } from 'react-toastify';
 import { signIn, signOut, useSession } from "next-auth/react";
 import Link from 'next/link';
 import axios from 'axios';
@@ -14,12 +14,12 @@ export default function LoginForm() {
     const { addUser } = useAuth();
 
     const router = useRouter();
-    const {data: session} =useSession()
+    const { data: session } = useSession()
     const [data, setData] = useState({
         email: "",
         password: ""
     });
-console.log(session)
+    console.log(session)
     const handleSubmit = async (e: any) => {
         e.preventDefault();
 
@@ -56,10 +56,10 @@ console.log(session)
                 addUser(user);
                 console.log("Added");
 
-                // router.push('/')
+                router.push('/')
             }
             else {
-                toast.error(response.data.msg)
+                toast.error("Invalid login credentials")
             }
 
 
@@ -106,11 +106,11 @@ console.log(session)
 
                 </form>
                 <div>
-                        <button className="inline-flex justify-center rounded-md border border-transparent bg-green-100 px-5 py-2.5 text-sm font-medium text-green-900 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2"
-                            onClick={() => { signIn("github") }}
-                        >
-                            or Login with Github</button>
-                    </div>
+                    <button className="inline-flex justify-center rounded-md border border-transparent bg-green-100 px-5 py-2.5 text-sm font-medium text-green-900 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2"
+                        onClick={() => { signIn("github") }}
+                    >
+                        or Login with Github</button>
+                </div>
             </div>
         </Layout>
     );

@@ -2,7 +2,8 @@
 import { UserProvider } from "@/Context/userAuth";
 import { SessionProvider } from "next-auth/react";
 import "@/styles/globals.css";
-
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 // export const metadata = {
 //   title: 'Next.js',
@@ -20,7 +21,8 @@ export default function RootLayout({
       <body>
         <UserProvider>
           <SessionProvider>
-          {children}
+            <ToastContainer />
+            {children}
           </SessionProvider>
         </UserProvider>
       </body>

@@ -15,6 +15,7 @@ export interface User {
 export interface UserContext {
     user: User;
     addUser: (myUser: User) => void;
+    setUser: (myUser: User | null) => void;
 }
 
 export const userContext = createContext<UserContext | null>(null);
@@ -40,7 +41,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
 
     return (
         // user showing redline but it still works
-        <userContext.Provider value={{ user, addUser }}>
+        <userContext.Provider value={{ user, addUser, setUser }}>
             {children}
         </userContext.Provider>
     )

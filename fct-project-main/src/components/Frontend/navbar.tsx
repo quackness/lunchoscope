@@ -4,12 +4,20 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { useAuth } from "@/Context/userAuth";
+import { IoMdLogOut } from "react-icons/io";
+import cookie from 'cookie-cutter';
+
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const router = useRouter();
 
-  const { user } = useAuth();
+  const { user, setUser } = useAuth();
+
+  const handleLogout = () => {
+    cookie.set('authToken', "expired");
+    setUser(null);
+  }
 
   return (
     <header aria-label="Site Header" className="bg-violet-600" id="header">
@@ -72,9 +80,14 @@ export default function Navbar() {
           <div className="hidden flex-1 items-center justify-end gap-4 sm:flex">
             {user ? (
 
-              <span className="rounded-lg bg-amber-400 transition hover:bg-amber-500 px-5 py-2 text-sm font-medium text-white">
-                Welcome Back, <span className="capitalize">{user?.name}</span>
-              </span>
+              <>
+                <span className="rounded-lg bg-green-500 transition hover:bg-green-600 px-5 py-2 text-sm font-medium text-white">
+                  Welcome Back, <span className="capitalize">{user?.name}</span>
+                </span>
+                <IoMdLogOut onClick={handleLogout} className="text-red-600 text-3xl cursor-pointer" />
+
+              </>
+
             ) : (
               <Link href="/login" passHref>
                 <span className="rounded-lg bg-amber-400 transition hover:bg-amber-500 px-5 py-2 text-base font-medium text-white">

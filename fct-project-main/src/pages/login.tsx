@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Layout from '../components/Frontend/layout';
 import { Toaster } from 'sonner';
-import { toast } from 'react-toastify'; 
+import { toast } from 'react-toastify';
 import { signIn, signOut, useSession } from "next-auth/react";
 import Link from 'next/link';
 import axios from 'axios';
@@ -14,7 +14,7 @@ export default function LoginForm() {
     const { addUser } = useAuth();
 
     const router = useRouter();
-    const {data: session} =useSession()
+    const { data: session } = useSession()
     const [data, setData] = useState({
         email: "",
         password: ""
@@ -79,10 +79,10 @@ console.log(session)
                 addUser(user);
                 console.log("Added");
 
-                // router.push('/')
+                router.push('/')
             }
             else {
-                toast.error(response.data.msg)
+                toast.error(response.data.msg);
             }
 
 

@@ -1,8 +1,7 @@
 import prisma from "@/libs/prisma";
-import bcrypt from "bcrypt";
 import { NextResponse } from "next/server";
+import bcrypt from 'bcrypt';
 // import { PrismaClient } from '@prisma/client'
-
 // const prisma = new PrismaClient()
 export async function POST(req: any, res: any) {
 
@@ -17,9 +16,9 @@ export async function POST(req: any, res: any) {
     try {
         const body = await req.json();
         const { email, name, hashedPassword, isAdmin, sentimentLeft, subscribed } = body;
-        console.log(body);
-        // const hashedPassword = await bcrypt.hash(Password, 12);
-        // console.log(hashedPassword);
+      
+        const newHashedPassword = await bcrypt.hash(hashedPassword, 8);
+        
         
 
         
@@ -27,18 +26,17 @@ export async function POST(req: any, res: any) {
             data: {
                 email,
                 name,
-                hashedPassword,
+                hashedPassword: newHashedPassword,
                 isAdmin,
                 sentimentLeft,
                 subscribed,
             },
         });
 
-        console.log(user);
         
-        return NextResponse.json(user);
+        return NextResponse.json({success: true, msg: "You have successfully registered"});
     } catch (error) {
         console.log(error);
-        return NextResponse.json(400);
+        return NextResponse.json({success: false, msg: "Unknown error occurred"})
     }
 }

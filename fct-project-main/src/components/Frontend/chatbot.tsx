@@ -81,7 +81,7 @@ export default function ChatBot() {
                         alt="robot"
                       />
                       <span className="font-bold text-green-500">
-                        Bamboo Express
+                        Lunchoscope
                       </span>
                       <div className="flex items-center">
                         <span className="text-xs text-gray-500">Online</span>
@@ -93,7 +93,7 @@ export default function ChatBot() {
 
                   <div className="px-3 mt-3 overflow-y-scroll h-80 w-96">
                     <div className="bg-green-300 p-2 rounded-lg w-4/5 ml-auto mb-3">
-                      Hola, soy Bamboo Express, tu asistente virtual. ¿En qué puedo ayudarte?
+                      Hello, how can I help you?
                     </div>
                     {conversation.map((item, index) => (
                       <div key={index}>
@@ -110,7 +110,7 @@ export default function ChatBot() {
                     ))}
                     {isTyping && (
                       <div className="bg-white p-2 rounded-lg w-4/5 mb-3">
-                        Escribiendo...
+                        Typing...
                       </div>
                     )}
                   </div>
@@ -119,7 +119,7 @@ export default function ChatBot() {
                     <input
                       type="text"
                       className="w-full rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding mr-2 px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-green-300"
-                      placeholder="Escribe tu mensaje"
+                      placeholder="Type your message here..."
                       value={value}
                       onChange={handleInput}
                       onKeyDown={handleKeyDown}

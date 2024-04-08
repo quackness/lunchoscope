@@ -50,7 +50,7 @@ const Home: React.FC = () => {
 
     const token = cookie.get('authToken');
 
-    if (!token) {
+    if (!token || token == 'expired') {
       return;
     }
 

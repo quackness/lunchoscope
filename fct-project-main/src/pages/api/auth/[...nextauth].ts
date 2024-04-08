@@ -54,7 +54,7 @@ const authOptions: any = {
   ],
   callbacks: {
     async signIn({ user, account }: { user: AuthUser; account: Account }) {
-      console.log(user)
+      console.log("my user", user)
       if (account?.provider == "credentials") {
         return true;
       }

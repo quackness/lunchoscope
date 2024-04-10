@@ -74,7 +74,7 @@ export default function LoginForm() {
         <Layout>
             <div className="flex flex-col justify-center items-center my-10 mx-auto max-w-screen-xl">
 
-                <form className="px-16 py-6 rounded shadow-md w-3/4 sm:w-3/6 md:w-3/6 lg:w-5/12 xl:w-2/6"
+                <form className="px-16 py-6 rounded shadow-md w-3/4 sm:w-3/6 md:w-3/6 "
                     onSubmit={handleSubmit}>
                     <Toaster richColors position="bottom-center" />
                     <div className="mb-4">
@@ -96,7 +96,7 @@ export default function LoginForm() {
 
                     </div>
 
-                    <div className="flex flex-wrap md:flex-nowrap gap-10 mt-6 mb-3">
+                    <div className="flex flex-wrap md:flex-nowrap gap-6 mt-6 mb-3">
                     <div>
                         <button type="submit" className="inline-flex justify-center rounded-md border border-transparent bg-green-100 mb-4 mt-2 px-5 py-2.5 text-base font-medium text-green-900 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2">
                             Login
@@ -105,8 +105,8 @@ export default function LoginForm() {
                         
                     </div>
                     <div className="text-base">
-                        <p className="text-base">Don't have account?</p>
-                        <Link href="/signup" className="text-violet-600 hover:underline text-lg">Click here to Sign up.</Link>
+                        <p className="">Don't have account?</p>
+                        <Link href="/signup" className="text-violet-600 hover:underline">Click here to Sign up.</Link>
                         </div>
                     </div>
 

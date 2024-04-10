@@ -105,8 +105,8 @@ useEffect(()=>{
         {restaurant.name}</h2>
         
         <div className="badge bg-violet-500 text-white p-3">Rating: {restaurant.rating}</div>
-        {restaurant.price? <div className="badge bg-teal-300 p-3"> Price range: {restaurant.price}</div> : ""}
-        {restaurant.is_closed? <div className="badge bg-amber-300 p-3">Closed</div> : <div className="badge bg-amber-300 p-3">Open</div>}
+        {restaurant.price? <div className="badge bg-teal-400 p-3"> Price range: {restaurant.price}</div> : ""}
+        {restaurant.is_closed? <div className="badge p-3">Closed</div> : <div className="badge bg-amber-300 p-3">Open</div>}
       
       <p>📍 {restaurant.location.display_address.join(', ')} </p>
       <p>Description....</p>
@@ -120,7 +120,7 @@ useEffect(()=>{
       </div>
     </div>
     <div className="card-actions justify-end">
-      <button className="btn bg-teal-500 text-white btn-wide"><Link href={`/restaurant/${restaurant.id}`}>See more details</Link></button>
+      <button className="btn btn-primary text-white btn-wide"><Link href={`/restaurant/${restaurant.id}`}>See more details</Link></button>
     </div>
     </div>
   </div>

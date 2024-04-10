@@ -49,9 +49,15 @@ const SkipHoroscopeRestaurantsList = (props: Props) => {
 
   return (
     <>
-    <div>{props.skipped? "Skipped horoscope!!" : ""}</div>
-    <div>Lat: {props.longitude}</div>
-    <div>Lat: {props.latitude}</div>
+<div className="relative mx-auto max-w-md rounded-lg bg-gradient-to-tr from-pink-300 to-blue-300 p-0.5 shadow-lg">
+    <div className="bg-white p-7 rounded-md">
+        <h1 className="font-bold text-xl mb-4">{props.skipped? "Skipped horoscope!!" : ""}</h1>
+       <p className="text-lg mb-2 font-mono">Lunchoscope based on your location:</p>
+        <p className="text-lg mb-2 font-mono">Longitude: {props.longitude}</p>
+        <p className="text-lg mb-2 font-mono">Latitude: {props.latitude}</p>
+    </div>
+</div>
+    
     {restaurantNoSentiment.length === 0 ? <progress className="progress w-56"></progress> : ""}
     {restaurantNoSentiment.map(restaurant => (
   <div key={restaurant.name} className="card w-3/4 h-1/6 card-side bg-base-100 shadow-xl mx-auto m-8">
@@ -61,7 +67,7 @@ const SkipHoroscopeRestaurantsList = (props: Props) => {
         {restaurant.name}</h2>
         <div className="badge bg-violet-500 text-white p-3">Rating: {restaurant.rating}</div>
         {restaurant.price? <div className="badge bg-teal-400 p-3"> Price range: {restaurant.price}</div> : ""}
-        {restaurant.is_closed? <div className="badge p-3">Closed</div> : <div className="badge bg-amber-400 p-3">Open</div>}
+        {restaurant.is_closed? <div className="badge p-3">Closed</div> : <div className="badge bg-amber-300 p-3">Open</div>}
       
       <p>📍 {restaurant.location.display_address.join(', ')} </p>
       <p>Description....</p>
@@ -75,7 +81,7 @@ const SkipHoroscopeRestaurantsList = (props: Props) => {
       </div>
     </div>
     <div className="card-actions justify-end">
-      <button className="btn bg-teal-400 text-white btn-wide"><Link href={`/restaurant/${restaurant.id}`}>See more details</Link></button>
+      <button className="btn btn-primary text-white btn-wide"><Link href={`/restaurant/${restaurant.id}`}>See more details</Link></button>
     </div>
     </div>
   </div>

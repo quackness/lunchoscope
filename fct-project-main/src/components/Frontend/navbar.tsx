@@ -81,7 +81,7 @@ export default function Navbar() {
             {user ? (
 
               <>
-                <span className="rounded-lg bg-green-500 transition hover:bg-green-600 px-5 py-2 text-sm font-medium text-white">
+                <span className="rounded-lg bg-amber-400 transition hover:bg-amber-500 px-5 py-2 text-sm font-medium text-white">
                   Welcome Back, <span className="capitalize">{user?.name}</span>
                 </span>
                 <IoMdLogOut onClick={handleLogout} className="text-red-600 text-3xl cursor-pointer" />

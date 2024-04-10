@@ -70,12 +70,13 @@ const ZodiacDisplay = (props: Props) => {
         setSkipHorscope(!skipHorscope);
       };
       
-    return (<div className="text-center mx-14">
+    return (<div className="text-center mx-auto max-w-screen-xl px-4 pt-6 sm:px-6 ">
         {/* <CoordinatesDisplay longitude={props.latitude} latitude={props.longitude}/> */}
-        <button className="btn mb-8 px-8" onClick={handleSkipHoroscopeButtonClick}>{skipHorscope? 'Get horoscope for the day' : 'Skip Horoscope'}</button>
+        <button className="btn px-8 mb-8" onClick={handleSkipHoroscopeButtonClick}>{skipHorscope? 'Get horoscope for the day' : 'Skip Horoscope'}</button>
         {skipHorscope? (<SkipHoroscopeRestaurantsList skipped={skipHorscope} longitude={longitude} latitude={latitude}  />) : (
             <>
-        <div className="flex flex-row gap-6" >
+            <div className="mx-auto p-12">
+        <div className="flex flex-row md:flex-nowrap flex-wrap gap-6" >
             <label className="basis-1/6 swap swap-flip">
                 <input type="checkbox" />
                 <div className="swap-on"><button className="btn my-8 mx-2" onClick={() => handleButtonClick('aries')}>Generate Horoscope</button></div>
@@ -119,7 +120,7 @@ const ZodiacDisplay = (props: Props) => {
             </label>
         </div>
 
-        <div className="flex flex-row gap-6 mt-10">
+        <div className="flex flex-row md:flex-nowrap flex-wrap gap-6 mt-10">
         <label className="basis-1/6 swap swap-flip">
                 <input type="checkbox" />
                 <div className="swap-on"><button className="btn my-8 mx-2" onClick={() => handleButtonClick('libra')}>Generate Horoscope</button></div>
@@ -162,14 +163,28 @@ const ZodiacDisplay = (props: Props) => {
                     <p>Pisces</p> <p className="text-sm">February 20– March 21</p></div>
             </label>
         </div>
-        <div className="m-10">
-            <p>{horoscope? `${selectSign.toUpperCase()}` : ""}</p>
-        <div>{horoscope && horoscope}</div>
         </div>
-        <HoroscopeRestaurantsList sentiment={sentiment} longitude={longitude} latitude={latitude}/>
-        </>)
+
+      
+        {horoscope && (
+        <div className="relative card w-3/4 h-1/6 card-side bg-base-100 mx-auto m-8 rounded-lg bg-gradient-to-tr from-pink-300 to-blue-300 p-0.5 shadow-lg">
+          <div className="bg-white p-7 rounded-md">
+            <h1 className="font-bold text-xl mb-2 font-mono">{horoscope ? `${selectSign.toUpperCase()}` : ""}</h1>
+            <p>{horoscope && horoscope}</p>
+          </div>
+        </div>
+      )}
+     
+      <HoroscopeRestaurantsList sentiment={sentiment} longitude={longitude} latitude={latitude}/>
+
+       
+        </>
+        
+        )
       }
-    </div>)
+    </div>
+    
+    )
 
 }
 

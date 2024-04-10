@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import { jwtVerify } from 'jose';
 import cookie from 'cookie-cutter';
 import { useAuth } from "@/Context/userAuth";
-import SentimentBanner from "@/components/Frontend/sentimentBanner";
+import SentimentBanner from "@/components/Frontend/SentimentBanner";
 import axios from 'axios';
 
 

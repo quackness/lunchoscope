@@ -169,7 +169,7 @@ const ZodiacDisplay = (props: Props) => {
         {horoscope && (
         <div className="relative card w-3/4 h-1/6 card-side bg-base-100 mx-auto m-8 rounded-lg bg-gradient-to-tr from-pink-300 to-blue-300 p-0.5 shadow-lg">
           <div className="bg-white p-7 rounded-md">
-            <h1 className="font-bold text-xl mb-2">{horoscope ? `${selectSign.toUpperCase()}` : ""}</h1>
+            <h1 className="font-bold text-xl mb-2 font-mono">{horoscope ? `${selectSign.toUpperCase()}` : ""}</h1>
             <p>{horoscope && horoscope}</p>
           </div>
         </div>

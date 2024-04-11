@@ -2,11 +2,11 @@ import React from 'react';
 import Link from 'next/link';
 
 interface UserInfo {
-    sentimentLeft: number;
-    subscribed?: boolean;
-  }
+  sentimentLeft: number;
+  subscribed?: boolean;
+}
 
-  const SentimentBanner: React.FC<{ userInfo: UserInfo }> = ({ userInfo }) => {
+const SentimentBanner: React.FC<{ userInfo: UserInfo }> = ({ userInfo }) => {
   return userInfo.sentimentLeft >= 0 ? (
     <div className="mx-auto mt-6 w-3/5">
       <div role="alert" className="alert">

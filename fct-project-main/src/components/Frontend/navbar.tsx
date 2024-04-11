@@ -52,7 +52,7 @@ export default function Navbar() {
                 Home
               </span>
             </Link>
-           
+
             <Link href="/pricing" passHref>
               <span
                 className={`${router.pathname === "/pricing"
@@ -89,7 +89,7 @@ export default function Navbar() {
               </>
 
             ) : (
-              <Link href="/login" passHref>
+              <Link href="/login2" passHref>
                 <span className="rounded-lg bg-amber-400 transition hover:bg-amber-500 px-5 py-2 text-base font-medium text-white">
                   Login
                 </span>
@@ -149,9 +149,9 @@ export default function Navbar() {
                         >
                           Pricing
                         </span>
-                        </Link>
-                   </li>
-                   
+                      </Link>
+                    </li>
+
                   </ul>
                 </nav>
               </div>

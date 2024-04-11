@@ -24,17 +24,17 @@ const Home: React.FC = () => {
 
   const [updateUser, setUpdateUser] = useState({});
 
-  useEffect(()=> {
+  useEffect(() => {
     if (!user?.id) {
       return;
     }
     fetchUsers();
-  }, [user?.id]);
+  }, [user?.id, user]);
 
   const fetchUsers = async () => {
     try {
       const userState = await axios.get(`http://localhost:3000/getUsers/${user.id}`)
-      const person : String = userState.data;
+      const person: String = userState.data;
       setUpdateUser(person);
     } catch (error) {
       console.error('Error with fetching users:', error);

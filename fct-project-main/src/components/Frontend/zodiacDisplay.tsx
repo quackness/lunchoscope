@@ -134,7 +134,7 @@ const ZodiacDisplay = (props: Props) => {
           </label>
         </div>
 
-        <div className="flex flex-row gap-6 mt-10">
+        <div className="flex flex-row md:flex-nowrap flex-wrap gap-6 mt-10">
           <label className="basis-1/6 swap swap-flip">
             <input type="checkbox" />
             <div className="swap-on"><button className="btn my-8 mx-2" onClick={() => handleButtonClick('libra')}>Generate Horoscope</button></div>

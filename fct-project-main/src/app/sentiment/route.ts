@@ -17,6 +17,7 @@ export async function PATCH(req: any){
                 sentimentLeft: userExists.sentimentLeft-1
             }
         });
+        
 
         delete updateSentiment?.hashedPassword;
         

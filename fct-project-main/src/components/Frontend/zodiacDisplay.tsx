@@ -89,6 +89,7 @@ const ZodiacDisplay = (props: Props) => {
     <button className="btn mb-8 px-8" onClick={handleSkipHoroscopeButtonClick}>{skipHorscope ? 'Get horoscope for the day' : 'Skip Horoscope'}</button>
     {skipHorscope ? (<SkipHoroscopeRestaurantsList skipped={skipHorscope} longitude={longitude} latitude={latitude} />) : user?.subscribed && (
       <>
+
         <div className="flex flex-row gap-6" >
           <label className="basis-1/6 swap swap-flip">
             <input type="checkbox" />

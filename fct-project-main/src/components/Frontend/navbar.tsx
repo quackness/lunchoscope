@@ -77,6 +77,7 @@ export default function Navbar() {
             )}
           </nav>
 
+
           <div className="hidden flex-1 items-center justify-end gap-4 sm:flex">
             {user ? (
 

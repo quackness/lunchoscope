@@ -86,7 +86,7 @@ const ZodiacDisplay = (props: Props) => {
 
   return (<div className="text-center mx-14">
     {/* <CoordinatesDisplay longitude={props.latitude} latitude={props.longitude}/> */}
-    <button className="btn mb-8 px-8" onClick={handleSkipHoroscopeButtonClick}>{skipHorscope ? 'Get horoscope for the day' : 'Skip Horoscope'}</button>
+    {user ? <button className="btn mb-8 px-8" onClick={handleSkipHoroscopeButtonClick}>{skipHorscope ? 'Get horoscope for the day' : 'Skip Horoscope'}</button> : ""}
     {skipHorscope ? (<SkipHoroscopeRestaurantsList skipped={skipHorscope} longitude={longitude} latitude={latitude} />) : user?.subscribed && (
       <>
 

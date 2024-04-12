@@ -2,7 +2,7 @@ import React from 'react'
 import Navbar from './navbar'
 import Footer from './footer'
 // import Katering from './katering'
-import Chatbot from './chatbot'
+
 import { motion } from 'framer-motion'
 
 type LayoutProps = {
@@ -13,7 +13,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <>
       <Navbar />
-      <Chatbot />
+      
       <motion.main
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

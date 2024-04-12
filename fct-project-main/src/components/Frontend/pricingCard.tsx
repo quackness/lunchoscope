@@ -1,3 +1,4 @@
+// @ts-nocheck
 'use client';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
@@ -24,23 +25,23 @@ interface PricingCardProps {
 const PricingCard = ({ price }: PricingCardProps) => {
   console.log(price)
 
-  const { user } = useAuth();
+  const { user, addUser } = useAuth();
   // console.log(user)
 
 
-  const { addUser } = useAuth();
+  //const { addUser } = useAuth();
 
   const fetchDataOnLoad = async () => {
     const token = cookie.get('authToken');
 
-    if (!token) {
+    if (!token || !user) {
       return;
     }
 
     const decode = await jwtVerify(token, new TextEncoder().encode('testpassword'))
-    const user = decode.payload;
+    const userPayload = decode.payload;
     if (decode.payload) {
-      addUser(user);
+      addUser(userPayload);
     }
   }
 

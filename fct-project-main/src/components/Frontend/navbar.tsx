@@ -52,7 +52,7 @@ export default function Navbar() {
                 Home
               </span>
             </Link>
-           
+
             <Link href="/pricing" passHref>
               <span
                 className={`${router.pathname === "/pricing"
@@ -76,6 +76,7 @@ export default function Navbar() {
               </Link>
             )}
           </nav>
+
 
           <div className="hidden flex-1 items-center justify-end gap-4 sm:flex">
             {user ? (
@@ -149,9 +150,9 @@ export default function Navbar() {
                         >
                           Pricing
                         </span>
-                        </Link>
-                   </li>
-                   
+                      </Link>
+                    </li>
+
                   </ul>
                 </nav>
               </div>

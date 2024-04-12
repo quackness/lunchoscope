@@ -14,8 +14,7 @@ interface UserInfo {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
         </svg>
         <span>
-          You have used {userInfo.sentimentLeft}
-          {userInfo?.subscribed ? "/100" : "/5"} restaurant suggestions limit. {userInfo?.subscribed ? "" : "Upgrade your plan to have access to 100 horoscope sentiments."}
+          Your current plan allows {userInfo.sentimentLeft} horoscope sentiment(s). {userInfo?.subscribed ? "" : "Upgrade your plan to unlock 100 analyses."}
         </span>
         {userInfo?.sentimentLeft <= 5 && (
           <button className="btn btn-primary">

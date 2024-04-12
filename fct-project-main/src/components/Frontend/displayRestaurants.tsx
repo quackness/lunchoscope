@@ -21,7 +21,7 @@ const DisplayRestaurants = () => {
     <div className="badge badge-secondary">Price range here</div>
     </h2>
     <p>Location: 1533 Barrington Street Halifax, NS </p>
-    <p>Description....</p>
+    
     <div className="card-actions justify-start">
       <div className="badge badge-outline">Chineese</div> 
       <div className="badge badge-outline">Asian Fusion</div>

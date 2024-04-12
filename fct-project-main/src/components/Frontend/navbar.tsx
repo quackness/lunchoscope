@@ -67,8 +67,8 @@ export default function Navbar() {
               <Link href="/admin/users" passHref>
                 <span
                   className={`${router.pathname === "/admin/users"
-                    ? "text-green-500"
-                    : "text-gray-500 hover:text-gray-900 transition "
+                    ? "text-yellow-300"
+                    : "text-yellow-300 hover:text-gray-900 transition "
                     } text-base`}
                 >
                   Admin
@@ -82,9 +82,9 @@ export default function Navbar() {
 
               <>
                 <span className="rounded-lg bg-amber-400 transition hover:bg-amber-500 px-5 py-2 text-sm font-medium text-white">
-                  Welcome Back, <span className="capitalize">{user?.name}</span>
+                  Welcome back, <span className="capitalize">{user?.name}</span>
                 </span>
-                <IoMdLogOut onClick={handleLogout} className="text-red-600 text-3xl cursor-pointer" />
+                <IoMdLogOut onClick={handleLogout} className="text-amber-400 text-3xl cursor-pointer" />
 
               </>
 
@@ -130,7 +130,7 @@ export default function Navbar() {
                         <span
                           onClick={() => setMenuOpen(false)}
                           className={`${router.pathname === "/blog"
-                            ? "text-green-500"
+                            ? "text-gray-500"
                             : "text-gray-500 hover:text-gray-900 transition "
                             } text-base`}
                         >
@@ -143,7 +143,7 @@ export default function Navbar() {
                         <span
                           onClick={() => setMenuOpen(false)}
                           className={`${router.pathname === "/pricing"
-                            ? "text-green-500"
+                            ? "text-gray-500"
                             : "text-gray-500 hover:text-gray-900 transition"
                             }  text-base`}
                         >
@@ -151,6 +151,20 @@ export default function Navbar() {
                         </span>
                         </Link>
                    </li>
+                   {user?.isAdmin && (
+                    <li>
+              <Link href="/admin/users" passHref>
+                <span
+                  className={`${router.pathname === "/admin/users"
+                    ? "text-gray-500"
+                    : "text-gray-500 hover:text-gray-900 transition "
+                    } text-base`}
+                >
+                  Admin
+                </span>
+              </Link>
+              </li>
+            )}
                    
                   </ul>
                 </nav>

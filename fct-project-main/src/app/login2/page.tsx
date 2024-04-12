@@ -72,9 +72,9 @@ export default function LoginForm() {
 
     return (
         <Layout>
-            <div className="flex flex-col justify-center items-center my-10 mx-auto max-w-screen-xl">
+            <div className="flex flex-col justify-center items-center my-12 mx-auto max-w-screen-xl">
 
-                <form className="px-16 py-6 rounded shadow-md w-3/4 sm:w-3/6 md:w-3/6 "
+                <form className="px-16 py-6 rounded shadow-md w-3/4 sm:w-3/6 md:w-3/6 mt-6"
                     onSubmit={handleSubmit}>
                     <Toaster richColors position="bottom-center" />
                     <div className="mb-4">

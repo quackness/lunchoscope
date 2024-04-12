@@ -62,7 +62,7 @@ const Pricing = () => {
               <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-gray-600 sm:text-center">Sign up today and never wonder where to eat out again!</p>
          </div>
 
-         <div className="grid grid-cols-1 sm:grid-cols-1 mb-12 gap-8 max-w-[600px] items-center mx-auto">
+         <div className="grid grid-cols-1 sm:grid-cols-1 mb-12 md:mb-24 gap-8 max-w-[600px] items-center mx-auto">
            {/* {prices && prices.map(price => (
 
            <PricingCard price={price} key={price.id}/>

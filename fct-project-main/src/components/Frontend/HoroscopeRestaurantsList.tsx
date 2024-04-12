@@ -109,11 +109,11 @@ useEffect(()=>{
         {restaurant.is_closed? <div className="badge p-3">Closed</div> : <div className="badge bg-amber-300 p-3">Open</div>}
       
       <p>📍 {restaurant.location.display_address.join(', ')} </p>
-      <p>Description....</p>
+      
       <div className="card-actions justify-start">
       <div>
         {restaurant.categories.map((category) => (
-          <span key={category.alias} className="badge badge-outline">
+          <span key={category.alias} className="badge badge-outline m-1">
             {category.title}
           </span>
         ))}

@@ -15,13 +15,33 @@ export default function Footer() {
               </Link>
             </div>
 
-            <p className="mx-auto mt-6 max-w-md text-center leading-relaxed text-gray-500 lg:text-left">
-            Discover your cosmic cravings, dine with delight!
-            </p>
           </div>
 
+          <nav aria-label="Footer Nav" className="mt-6 lg:mt-4">
+            <ul className="flex flex-wrap-reverse items-center justify-center gap-6 md:gap-8 lg:justify-end lg:gap-12">
+             
+              <li>
+              <Link
+            className="inline-block rounded-full bg-amber-400 text-white shadow transition hover:bg-amber-500 p-3 sm:p-4"
+            href="#header">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clipRule="evenodd" />
+            </svg>
+          </Link>
+              </li>
+            </ul>
+            
+          </nav>
+          
         </div>
+
+        <p className="mb-10 mt-4 text-center text-sm text-gray-500 lg:text-left">
+        Discover your cosmic cravings, dine with delight!
+        </p>
       </div>
     </footer>
+
+
+
   );
 }

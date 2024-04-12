@@ -7,8 +7,8 @@ export default function Banner() {
       <div className="mx-auto max-w-screen-xl px-4 pt-6 sm:px-6 lg:flex lg:items-center lg:px-4">
         <div className="max-w-xl text-center sm:text-left md:pt-6 lg:pl-8 lg:ml-8">
           <h1 className="font-extrabold text-3xl">
-            Confused about a place to eat out ?
-            <strong className="mt-2 text-4xl block font-extrabold text-transparent bg-clip-text bg-violet-500">
+            Confused about a place to eat out?
+            <strong className="mt-2 text-4xl block font-extrabold text-transparent bg-clip-text bg-secondary">
               Lunchoscope!
             </strong>
           </h1>

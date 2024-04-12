@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Link from 'next/link';
 import Testimonial from '@/components/Frontend/testimonial';
+import Layout from '@/components/Frontend/layout';
 
 interface PageProps {
   params: { id: string };
@@ -96,6 +97,7 @@ function Page({ params }: PageProps) {
       const { start, end } = processedHours[key];
 
       return (
+        
         <p key={key}>
         {dayName}: {start.slice(0,2) + ':' + start.slice(2,4)} - {end.slice(0,2)+ ':' + end.slice(2,4)}
         </p>
@@ -104,8 +106,8 @@ function Page({ params }: PageProps) {
   };
 
   return (
-    <>
-      <nav>Navbar will be here </nav>
+    
+      <Layout>
 
       <div className="text-lg breadcrumbs ml-5">
         <ul>
@@ -121,22 +123,23 @@ function Page({ params }: PageProps) {
         </ul>
       </div>
 
-      <div className={restaurant === null ? 'skeleton w-96 h-96 mx-auto' : 'card w-96 bg-base-100 shadow-xl mx-auto'}>
-        {restaurant?.image_url ? <figure><img src={`${restaurant?.image_url}`} alt="car!" /></figure> : ''}
-        <div className="card-body">
-          {restaurant?.name ? <h2 className="card-title">{`${restaurant?.name}`}</h2> : ''}
-          {restaurant?.location.display_address ? <p>Address: {`${restaurant?.location.display_address.join(', ')}`}</p> : ''}
+<div className="mx-auto max-w-screen-xl sm:p-14 p-4 sm:text-base">
+      <div className="card lg:card-side bg-base-100 shadow-xl ">
+      {restaurant?.image_url ?<figure><img className="w-96" src={`${restaurant?.image_url}`} alt={`${restaurant}`}/></figure>: ''}
+  <div className="card-body">
+  {restaurant?.name ? <h2 className="card-title">{`${restaurant?.name}`}</h2> : ''}
+          {restaurant?.location.display_address ? <p>Address: 📍 {`${restaurant?.location.display_address.join(', ')}`}</p> : ''}
           {restaurant?.display_phone ? <p>Phone: {`${restaurant?.display_phone}`}</p> : ''}
           {restaurant?.rating ? <p>Rating: {`${restaurant?.rating}`}</p> : ''}
           {restaurant?.price ? <p>Price: {`${restaurant.price}`}</p> : ''}
-         
-{restaurant?.hours ?
-          <div className="opening-hours">
-        <h3>Opening Hours:</h3>
+
+          {restaurant?.hours ?
+          <div className="opening-hours ">
+        <h3 className="badge badge-warning badge-lg my-3 text-lg">Opening Hours</h3>
+        
         {displayOpeningHours()}
       </div> : ''}
-
-          <div className="card-actions justify-end">
+      <div className="card-actions justify-end">
             {restaurant?.url ? (
               <button className="btn btn-primary">
                 <Link href={`${restaurant?.url}`}>Go to the website</Link>
@@ -145,10 +148,13 @@ function Page({ params }: PageProps) {
               ''
             )}
           </div>
-        </div>
-      </div>
+  </div>
+</div>
+</div>
+
+      
 {restaurant?.id && <Testimonial params={params.id}/>}
-    </>
+</Layout>
   );
 }
 

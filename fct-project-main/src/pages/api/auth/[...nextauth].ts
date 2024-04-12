@@ -90,7 +90,6 @@ const authOptions: any = {
     }
   },
 
-  
   session: {
     strategy: "jwt",
   },

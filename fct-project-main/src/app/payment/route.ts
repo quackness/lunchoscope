@@ -10,6 +10,7 @@ export async function POST(request: any) {
   let data = await request.json();
   let priceId = data.priceId
   let email = data.email
+  console.log("email: ", email)
   console.log(email)
   const session = await stripe.checkout.sessions.create({
     line_items: [

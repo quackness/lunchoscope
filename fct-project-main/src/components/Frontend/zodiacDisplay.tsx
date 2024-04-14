@@ -177,10 +177,14 @@ const ZodiacDisplay = (props: Props) => {
               <p>Pisces</p> <p className="text-sm">February 20– March 21</p></div>
           </label>
         </div>
+
         <div className="m-10">
           <p>{horoscope ? `${selectSign.toUpperCase()}` : ""}</p>
           <div>{horoscope && horoscope}</div>
         </div>
+
+        
+    
         <HoroscopeRestaurantsList sentiment={sentiment} longitude={longitude} latitude={latitude} />
       </>)
     }

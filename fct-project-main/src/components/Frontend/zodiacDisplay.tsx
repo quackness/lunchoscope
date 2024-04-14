@@ -84,107 +84,112 @@ const ZodiacDisplay = (props: Props) => {
     setSkipHorscope(!skipHorscope);
   };
 
-  return (<div className="text-center mx-14">
+  return (<div className="text-center mx-auto max-w-screen-xl px-4 pt-6 sm:px-6">
     {/* <CoordinatesDisplay longitude={props.latitude} latitude={props.longitude}/> */}
-    {user ? <button className="btn mb-8 px-8" onClick={handleSkipHoroscopeButtonClick}>{skipHorscope ? 'Get horoscope for the day' : 'Skip Horoscope'}</button> : <div className="h-80"></div>}
+    {user ? <button className="btn px-8 mb-8" onClick={handleSkipHoroscopeButtonClick}>{skipHorscope ? 'Get horoscope for the day' : 'Skip Horoscope'}</button> : <div className="h-80"></div>}
     {skipHorscope ? (<SkipHoroscopeRestaurantsList skipped={skipHorscope} longitude={longitude} latitude={latitude} />) : user?.subscribed && (
       <>
 
-        <div className="flex flex-row gap-6" >
-          <label className="basis-1/6 swap swap-flip">
+        <div className="flex flex-row md:flex-nowrap flex-wrap text-xs md:text-sm lg:gap-6 mx-auto" >
+          <label className="basis-1/6 shrink flex-auto swap swap-flip">
             <input type="checkbox" />
             <div className="swap-on"><button className="btn my-8 mx-2" onClick={() => handleButtonClick('aries')}>Generate Horoscope</button></div>
-            <div className="swap-off"><img src='./img/aries.webp' className="box-content h-28 w-28 mx-auto"></img>
-              <p className="">Aries</p> <p className="text-sm">March 21 - April 20</p></div>
+            <div className="swap-off"><img src='./img/aries.webp' className="box-content size-10 sm:size-20 lg:size-28 mx-auto"></img>
+              <p className="">Aries</p> <p>March 21 - April 20</p></div>
           </label>
 
-          <label className="basis-1/6 swap swap-flip">
+          <label className="basis-1/6 shrink flex-auto swap swap-flip">
             <input type="checkbox" />
             <div className="swap-on"><button className="btn my-8 mx-2" onClick={() => handleButtonClick('taurus')}>Generate Horoscope</button></div>
-            <div className="swap-off"><img src='./img/taurus.webp' className="box-content h-28 w-28 mx-auto"></img>
-              <p className="">Taurus</p> <p className="text-sm">April 21 - May 21</p></div>
+            <div className="swap-off"><img src='./img/taurus.webp' className="box-content size-10 sm:size-20 lg:size-28 mx-auto"></img>
+              <p className="">Taurus</p> <p>April 21 - May 21</p></div>
           </label>
 
-          <label className="basis-1/6 swap swap-flip">
+          <label className="basis-1/6 shrink flex-auto swap swap-flip">
             <input type="checkbox" />
             <div className="swap-on"><button className="btn my-8 mx-2" onClick={() => handleButtonClick('gemini')}>Generate Horoscope</button></div>
-            <div className="swap-off"><img src='./img/gemini.webp' className="box-content h-28 w-28 mx-auto"></img>
-              <p>Gemini</p> <p className="text-sm">May 22 – June 23</p></div>
+            <div className="swap-off"><img src='./img/gemini.webp' className="box-content size-10 sm:size-20 lg:size-28 mx-auto"></img>
+              <p>Gemini</p> <p>May 22 – June 23</p></div>
           </label>
 
-          <label className="basis-1/6 swap swap-flip">
+          <label className="basis-1/6 shrink flex-auto swap swap-flip">
             <input type="checkbox" />
             <div className="swap-on"><button className="btn my-8 mx-2" onClick={() => handleButtonClick('cancer')}>Generate Horoscope</button></div>
-            <div className="swap-off"><img src='./img/cancer.webp' className="box-content h-28 w-28 mx-auto"></img>
-              <p>Cancer</p> <p className="text-sm">June 23 – July 23</p></div>
+            <div className="swap-off"><img src='./img/cancer.webp' className="box-content size-10 sm:size-20 lg:size-28 mx-auto"></img>
+              <p>Cancer</p> <p>June 23 – July 23</p></div>
           </label>
 
-          <label className="basis-1/6 swap swap-flip">
+          <label className="basis-1/6 shrink flex-auto swap swap-flip">
             <input type="checkbox" />
             <div className="swap-on"><button className="btn my-8 mx-2" onClick={() => handleButtonClick('leo')}>Generate Horoscope</button></div>
-            <div className="swap-off"><img src='./img/leo.webp' className="box-content h-28 w-28 mx-auto"></img>
-              <p>Leo</p> <p className="text-sm">July 24 – August 23</p></div>
+            <div className="swap-off"><img src='./img/leo.webp' className="box-content size-10 sm:size-20 lg:size-28 mx-auto"></img>
+              <p>Leo</p> <p>July 24 – August 23</p></div>
           </label>
 
-          <label className="basis-1/6 swap swap-flip">
+          <label className="basis-1/6 shrink flex-auto swap swap-flip">
             <input type="checkbox" />
             <div className="swap-on"><button className="btn my-8 mx-2" onClick={() => handleButtonClick('virgo')}>Generate Horoscope</button></div>
-            <div className="swap-off"><img src='./img/virgo.webp' className="box-content h-28 w-28 mx-auto"></img>
-              <p>Virgo</p> <p className="text-sm">August 24 – September 23</p></div>
+            <div className="swap-off"><img src='./img/virgo.webp' className="box-content size-10 sm:size-20 lg:size-28 mx-auto"></img>
+              <p>Virgo</p> <p>August 24 – September 23</p></div>
           </label>
         </div>
 
-        <div className="flex flex-row md:flex-nowrap flex-wrap gap-6 mt-10">
-          <label className="basis-1/6 swap swap-flip">
+        <div className="flex flex-row md:flex-nowrap flex-wrap text-xs md:text-sm lg:gap-6 md:mt-10 mx-auto">
+          <label className="basis-1/6 shrink flex-auto swap swap-flip">
             <input type="checkbox" />
             <div className="swap-on"><button className="btn my-8 mx-2" onClick={() => handleButtonClick('libra')}>Generate Horoscope</button></div>
-            <div className="swap-off"><img src='./img/libra.png' className="box-content h-28 w-28 mx-auto"></img>
-              <p>Libra</p> <p className="text-sm">September 24 – October 23</p></div>
+            <div className="swap-off"><img src='./img/libra.png' className="box-content size-10 sm:size-20 lg:size-28 mx-auto"></img>
+              <p>Libra</p> <p>September 24 – October 23</p></div>
           </label>
 
-          <label className="basis-1/6 swap swap-flip">
+          <label className="basis-1/6 shrink flex-auto swap swap-flip">
             <input type="checkbox" />
             <div className="swap-on"><button className="btn my-8 mx-2" onClick={() => handleButtonClick('scorpio')}>Generate Horoscope</button></div>
-            <div className="swap-off"><img src='./img/scorpio.webp' className="box-content h-28 w-28 mx-auto"></img>
-              <p>Scorpio</p> <p className="text-sm">October 24 – November 22</p></div>
+            <div className="swap-off"><img src='./img/scorpio.webp' className="box-content size-10 sm:size-20 lg:size-28 mx-auto"></img>
+              <p>Scorpio</p> <p>October 24 – November 22</p></div>
           </label>
 
-          <label className="basis-1/6 swap swap-flip">
+          <label className="basis-1/6 shrink flex-auto swap swap-flip">
             <input type="checkbox" />
             <div className="swap-on"><button className="btn my-8 mx-2" onClick={() => handleButtonClick('sagittarius')}>Generate Horoscope</button></div>
-            <div className="swap-off"><img src='./img/sagittarius.webp' className="box-content h-28 w-28 mx-auto"></img>
-              <p>Sagittarius</p> <p className="text-sm">November 23– December 22</p></div>
+            <div className="swap-off"><img src='./img/sagittarius.webp' className="box-content size-10 sm:size-20 lg:size-28 mx-auto"></img>
+              <p>Sagittarius</p> <p>November 23– December 22</p></div>
           </label>
 
-          <label className="basis-1/6 swap swap-flip">
+          <label className="basis-1/6 shrink flex-auto swap swap-flip">
             <input type="checkbox" />
             <div className="swap-on"><button className="btn my-8 mx-2" onClick={() => handleButtonClick('capricorn')}>Generate Horoscope</button></div>
-            <div className="swap-off"><img src='./img/capricorn.webp' className="box-content h-28 w-28 mx-auto"></img>
-              <p>Capricorn</p> <p className="text-sm">December 23 – January 20</p></div>
+            <div className="swap-off"><img src='./img/capricorn.webp' className="box-content size-10 sm:size-20 lg:size-28 mx-auto"></img>
+              <p>Capricorn</p> <p>December 23 – January 20</p></div>
           </label>
 
-          <label className="basis-1/6 swap swap-flip">
+          <label className="basis-1/6 shrink flex-auto swap swap-flip">
             <input type="checkbox" />
             <div className="swap-on"><button className="btn my-8 mx-2" onClick={() => handleButtonClick('aquarius')}>Generate Horoscope</button></div>
-            <div className="swap-off"><img src='./img/aquarius.png' className="box-content h-28 w-28 mx-auto"></img>
-              <p>Aquarius</p> <p className="text-sm">January 21 – February 19</p></div>
+            <div className="swap-off"><img src='./img/aquarius.png' className="box-content size-10 sm:size-20 lg:size-28 mx-auto"></img>
+              <p>Aquarius</p> <p>January 21 – February 19</p></div>
           </label>
 
-          <label className="basis-1/6 swap swap-flip">
+          <label className="basis-1/6 shrink flex-auto swap swap-flip">
             <input type="checkbox" />
             <div className="swap-on"><button className="btn my-8 mx-2" onClick={() => handleButtonClick('pisces')}>Generate Horoscope</button></div>
-            <div className="swap-off "><img src='./img/pisces.webp' className="box-content h-28 w-28 mx-auto"></img>
-              <p>Pisces</p> <p className="text-sm">February 20– March 21</p></div>
+            <div className="swap-off "><img src='./img/pisces.webp' className="box-content size-10 sm:size-20 lg:size-28 mx-auto"></img>
+              <p>Pisces</p> <p>February 20– March 21</p></div>
           </label>
         </div>
 
-        <div className="m-10">
-          <p>{horoscope ? `${selectSign.toUpperCase()}` : ""}</p>
-          <div>{horoscope && horoscope}</div>
-        </div>
 
-        
-    
+
+        {horoscope && (
+        <div className="card w-3/4 h-1/6 card-side bg-base-100 mx-auto m-8 rounded-lg bg-gradient-to-tr from-pink-300 to-blue-300 p-0.5 shadow-lg">
+          <div className="bg-white p-7 rounded-md">
+            <h1 className="font-bold text-base font-mono md:text-xl mb-2">{horoscope ? `${selectSign.toUpperCase()}` : ""}</h1>
+            <p>{horoscope && horoscope}</p>
+          </div>
+        </div>
+      )}
+       
+  
         <HoroscopeRestaurantsList sentiment={sentiment} longitude={longitude} latitude={latitude} />
       </>)
     }

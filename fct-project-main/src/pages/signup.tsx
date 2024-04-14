@@ -40,7 +40,7 @@ export default function LoginForm() {
             });
             const user = response.data;
             console.log(user)
-            router.push('/login');
+            router.push('/login2');
         } catch (error) {
             console.error('Error registering user:', error);
         }

@@ -23,18 +23,17 @@ interface PricingCardProps {
 }
 
 const PricingCard = ({ price }: PricingCardProps) => {
-  console.log(price)
+
 
   const { user, addUser } = useAuth();
-  // console.log(user)
-
+  console.log(user)
 
   //const { addUser } = useAuth();
 
   const fetchDataOnLoad = async () => {
     const token = cookie.get('authToken');
 
-    if (!token || !user) {
+    if (!token || token == 'expired') {
       return;
     }
 

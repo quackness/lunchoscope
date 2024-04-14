@@ -14,6 +14,8 @@ export default function Navbar() {
 
   const { user, setUser } = useAuth();
 
+  console.log("nav", user)
+
   const handleLogout = () => {
     cookie.set('authToken', "expired");
     setUser(null);

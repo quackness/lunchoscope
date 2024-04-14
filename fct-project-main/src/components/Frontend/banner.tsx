@@ -15,7 +15,7 @@ export default function Banner() {
 
           <p className="mt-4 max-w-lg sm:text-lg sm:leading-relaxed">
             Lunchoscope is a unique website that combines the excitement of astrology with the practicality of finding the perfect place to dine. 
-            <br/>By simply inputting your horoscope, Lunchoscope generates tailored restaurant recommendations in your vicinity.
+            <br/>By choosing your astrological sign, Lunchoscope generates tailored restaurant recommendations in your vicinity.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4 text-center">

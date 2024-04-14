@@ -101,7 +101,7 @@ const HoroscopeRestaurantsList = ({ sentiment, longitude, latitude }) => {
     <>
     <div>
  
-      {user?.subscribed && (
+      {user?.sentimentLeft > 0 && (
         <div>
 {data.map(restaurant => (
   <div key={restaurant.name} className="card w-3/4 h-1/6 card-side bg-base-100 shadow-xl mx-auto m-8">

@@ -78,6 +78,18 @@ const ZodiacDisplay = (props: Props) => {
     setSentiment(result);
     console.log("result", result);
   };
+  const assess = () => {
+    console.log(sentiment)
+    if (sentiment.positive.length > sentiment.negative.length) {
+      return <p>😀</p>;
+    }
+    if (sentiment.positive.length < sentiment.negative.length) {
+      return <p>😰</p>;
+     } if (sentiment.positive.length === sentiment.negative.length) {
+      return <p>😐</p>;
+    }
+    return null;
+  };
 
   const handleSkipHoroscopeButtonClick = () => {
     // change skipHorscope between true-false
@@ -87,7 +99,7 @@ const ZodiacDisplay = (props: Props) => {
   return (<div className="text-center mx-auto max-w-screen-xl px-4 pt-6 sm:px-6">
     {/* <CoordinatesDisplay longitude={props.latitude} latitude={props.longitude}/> */}
     {user ? <button className="btn px-8 mb-8" onClick={handleSkipHoroscopeButtonClick}>{skipHorscope ? 'Get horoscope for the day' : 'Skip Horoscope'}</button> : <div className="h-80"></div>}
-    {skipHorscope ? (<SkipHoroscopeRestaurantsList skipped={skipHorscope} longitude={longitude} latitude={latitude} />) : user?.subscribed && (
+    {skipHorscope ? (<SkipHoroscopeRestaurantsList skipped={skipHorscope} longitude={longitude} latitude={latitude} />) : user?.sentimentLeft > 0 && (
       <>
 
         <div className="flex flex-row md:flex-nowrap flex-wrap text-xs md:text-sm lg:gap-6 mx-auto" >
@@ -184,6 +196,7 @@ const ZodiacDisplay = (props: Props) => {
         <div className="card w-3/4 h-1/6 card-side bg-base-100 mx-auto m-8 rounded-lg bg-gradient-to-tr from-pink-300 to-blue-300 p-0.5 shadow-lg">
           <div className="bg-white p-7 rounded-md">
             <h1 className="font-bold text-base font-mono md:text-xl mb-2">{horoscope ? `${selectSign.toUpperCase()}` : ""}</h1>
+            {sentiment ? assess() : null}
             <p>{horoscope && horoscope}</p>
           </div>
         </div>

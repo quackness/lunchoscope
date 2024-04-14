@@ -3,6 +3,7 @@ import PricingCard from '@/components/Frontend/pricingCard';
 import axios from 'axios';
 import { useState, useEffect} from 'react';
 import Layout from '@/components/Frontend/layout';
+import { useAuth } from '@/Context/userAuth';
 
 export interface Price {
   id: string;
@@ -41,6 +42,8 @@ interface PricingCardProps {
 
 const Pricing = () => {
   const [prices, setPrices] = useState<Price[]>([]);
+  const { addUser, user } = useAuth();
+  console.log("user", user)
 
   console.log(prices[1])
   useEffect(() => {

@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useAuth } from "@/Context/userAuth";
 import { IoMdLogOut } from "react-icons/io";
 import cookie from 'cookie-cutter';
-
+import { signOut, useSession } from "next-auth/react";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -14,11 +14,18 @@ export default function Navbar() {
 
   const { user, setUser } = useAuth();
 
-  console.log("nav", user)
+  const { data: session } = useSession()
 
   const handleLogout = () => {
+
+    if (session) {
+      signOut();
+    }
+
     cookie.set('authToken', "expired");
     setUser(null);
+    console.log("NAV session", session);
+
   }
 
   return (
@@ -152,23 +159,23 @@ export default function Navbar() {
                         >
                           Pricing
                         </span>
+                      </Link>
+                    </li>
+                    {user?.isAdmin && (
+                      <li>
+                        <Link href="/admin/users" passHref>
+                          <span
+                            className={`${router.pathname === "/admin/users"
+                              ? "text-gray-500"
+                              : "text-gray-500 hover:text-gray-900 transition "
+                              } text-base`}
+                          >
+                            Admin
+                          </span>
                         </Link>
-                   </li>
-                   {user?.isAdmin && (
-                    <li>
-              <Link href="/admin/users" passHref>
-                <span
-                  className={`${router.pathname === "/admin/users"
-                    ? "text-gray-500"
-                    : "text-gray-500 hover:text-gray-900 transition "
-                    } text-base`}
-                >
-                  Admin
-                </span>
-              </Link>
-              </li>
-            )}
-                   
+                      </li>
+                    )}
+
                   </ul>
                 </nav>
               </div>

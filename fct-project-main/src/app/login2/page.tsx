@@ -1,5 +1,5 @@
 "use client"
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Layout from '@/components/Frontend/layout';
 import { Toaster } from 'sonner';
@@ -21,6 +21,35 @@ export default function LoginForm() {
         password: ""
     });
     console.log(session)
+
+    const handleGithub = async () => {
+
+        try {
+            const email = session?.user?.email;
+
+            const response = await axios.post('http://localhost:3000/finduser', { email: email });
+
+            console.log("find user res", response);
+
+            const userFound = response?.data.user;
+
+            addUser(userFound);
+
+        } catch (error) {
+
+            console.log("Unknown error occurred", error);
+
+
+        }
+
+
+    }
+
+    useEffect(() => {
+        handleGithub();
+    }, [session])
+
+
     const handleSubmit = async (e: any) => {
         e.preventDefault();
 
@@ -97,16 +126,16 @@ export default function LoginForm() {
                     </div>
 
                     <div className="flex flex-wrap md:flex-nowrap gap-6 mt-6 mb-3">
-                    <div>
-                        <button type="submit" className="inline-flex justify-center rounded-md border border-transparent bg-green-100 mb-4 mt-2 px-5 py-2.5 text-base font-medium text-green-900 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2">
-                            Login
-                        </button>
-                        <button onClick={() => signOut()} >Sign Out</button>
-                        
-                    </div>
-                    <div className="text-base">
-                        <p className="">Don't have account?</p>
-                        <Link href="/signup" className="text-violet-600 hover:underline">Click here to Sign up.</Link>
+                        <div>
+                            <button type="submit" className="inline-flex justify-center rounded-md border border-transparent bg-green-100 mb-4 mt-2 px-5 py-2.5 text-base font-medium text-green-900 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2">
+                                Login
+                            </button>
+                            <button onClick={() => signOut()} >Sign Out</button>
+
+                        </div>
+                        <div className="text-base">
+                            <p className="">Don't have account?</p>
+                            <Link href="/signup" className="text-violet-600 hover:underline">Click here to Sign up.</Link>
                         </div>
                     </div>
 
